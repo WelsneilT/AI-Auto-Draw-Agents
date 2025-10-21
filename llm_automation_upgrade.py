@@ -1,164 +1,294 @@
-import pyautogui
+"""
+======================================================================================
+ANIME STORY STUDIO V7.3 - RELIABLE WINDOW MAXIMIZE
+Zero Hotkeys + Guaranteed Maximize + CV-Powered
+======================================================================================
+"""
+
+import os
 import time
-import math
+import json
+import subprocess
+import ctypes
+from io import BytesIO
+from datetime import datetime
+from dotenv import load_dotenv
+from PIL import Image, ImageGrab
+import pyautogui
+import cv2
+import numpy as np
+from typing import Dict, Tuple
+import traceback
+import pygetwindow as gw # <<< THÊM THƯ VIỆN ĐỂ ĐIỀU KHIỂN CỬA SỔ
+from paint_cv_detector import detect_paint_interface_cv
 
-# --- CÁC THIẾT LẬP AN TOÀN VÀ CHUẨN BỊ ---
-pyautogui.FAILSAFE = True
-pyautogui.PAUSE = 0.05 # Thêm một khoảng nghỉ nhỏ sau mỗi hành động
+# Load environment
+load_dotenv()
 
-# --- CÁC HÀM TIỆN ÍCH ---
+# Config pyautogui
+pyautogui.FAILSAFE = False
+pyautogui.PAUSE = 0.1
 
-def open_and_prepare_paint():
-    """Mở MS Paint, phóng to và trả về vùng vẽ."""
-    print(">>> Mở Microsoft Paint và chuẩn bị...")
-    pyautogui.hotkey('win', 'r')
-    time.sleep(1)
-    pyautogui.write('mspaint', interval=0.1)
-    pyautogui.press('enter')
-    time.sleep(3) # Đợi cửa sổ Paint xuất hiện
+# Global scale factor
+SCALE_FACTOR = 1.0
 
-    # Phóng to cửa sổ Paint để chiếm toàn màn hình
-    pyautogui.hotkey('win', 'up')
-    time.sleep(1)
-    
-    # Lấy cửa sổ Paint đang hoạt động
+# ============ SCREEN SCALING ============
+
+def get_screen_scale_factor() -> float:
     try:
-        paint_window = pyautogui.getWindowsWithTitle('Paint')[0]
-        if not paint_window:
-            print("!!! Lỗi: Không tìm thấy cửa sổ Paint.")
-            return None
-        print(f"   ✓ Đã tìm thấy cửa sổ Paint tại: ({paint_window.left}, {paint_window.top})")
-        return paint_window
-    except IndexError:
-        print("!!! Lỗi: Không thể lấy thông tin cửa sổ Paint.")
-        return None
-
-def select_color(paint_window, color_name):
-    """
-    Click vào một màu trên bảng màu của Paint.
-    Lưu ý: Tọa độ này là tương đối so với góc trên bên trái của cửa sổ Paint
-    và có thể cần điều chỉnh cho phiên bản Paint hoặc độ phân giải khác.
-    """
-    colors = {
-        'black': (910, 55),
-        'red': (980, 55)
-    }
-    if color_name in colors:
-        print(f"   - Chọn màu: {color_name.upper()}...")
-        x, y = colors[color_name]
-        pyautogui.click(paint_window.left + x, paint_window.top + y)
-        time.sleep(0.5)
-
-def draw_circle_robust(center_x, center_y, radius, duration_per_segment=0.01):
-    """Vẽ hình tròn bằng cách kéo chuột liên tục."""
-    start_x = center_x + radius
-    start_y = center_y
-    pyautogui.moveTo(start_x, start_y)
-    pyautogui.mouseDown()
+        ctypes.windll.shcore.SetProcessDpiAwareness(2)
+    except:
+        pass
+    logical_width, logical_height = pyautogui.size()
+    screenshot = ImageGrab.grab()
+    physical_width, physical_height = screenshot.size
+    scale_factor = physical_width / logical_width
     
-    # Kéo qua các điểm trên vòng tròn
-    for i in range(10, 370, 10): # Bước nhảy 10 độ
-        angle = math.radians(i)
-        x = center_x + radius * math.cos(angle)
-        y = center_y + radius * math.sin(angle)
-        pyautogui.dragTo(x, y, duration=duration_per_segment, button='left')
-        
-    pyautogui.mouseUp()
+    print(f"\n   📐 Screen Detection:")
+    print(f"      Logical size:  {logical_width}x{logical_height}")
+    print(f"      Physical size: {physical_width}x{physical_height}")
+    print(f"      Scale factor:  {scale_factor:.2f}x ({scale_factor*100:.0f}%)")
+    
+    return scale_factor
 
-# --- HÀM VẼ CHÍNH ---
+def scale_coords(x: int, y: int) -> Tuple[int, int]:
+    global SCALE_FACTOR
+    return (int(x / SCALE_FACTOR), int(y / SCALE_FACTOR))
 
-def draw_doraemon_smart(paint_window):
-    """Hàm chính điều phối việc vẽ, sử dụng tọa độ tương đối của cửa sổ."""
+# ============ UTILITY FUNCTIONS ============
+
+def screenshot_full() -> Image.Image:
+    return ImageGrab.grab()
+
+def slow_click(x: int, y: int, clicks: int = 1):
+    scaled_x, scaled_y = scale_coords(x, y)
+    pyautogui.moveTo(scaled_x, scaled_y, duration=0.3)
+    pyautogui.click(clicks=clicks)
+    time.sleep(0.3)
+
+# ============ VISION FUNCTIONS ============
+
+def detect_paint_interface(screenshot: Image.Image) -> Dict:
+    """Phân tích giao diện Paint bằng Computer Vision."""
+    print("   🔬 Analyzing Paint interface via CV...")
+    return detect_paint_interface_cv(screenshot, templates_dir="templates")
+
+# ============ IMAGE PROCESSING ============
+
+def preprocess_image(image_path: str, max_size: int = 200) -> np.ndarray:
+    print(f"\n   📐 Processing image: {image_path}")
+    original = cv2.imread(image_path)
+    if original is None:
+        raise FileNotFoundError(f"Cannot read image: {image_path}")
+    
+    height, width = original.shape[:2]
+    scale = min(max_size / width, max_size / height)
+    new_width, new_height = int(width * scale), int(height * scale)
+    
+    resized = cv2.resize(original, (new_width, new_height), interpolation=cv2.INTER_AREA)
+    gray = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
+    _, bw = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+    
+    print(f"   ✅ Processed: {new_width}x{new_height} pixels")
+    
+    preview_path = "preview_bw.png"
+    cv2.imwrite(preview_path, bw)
+    print(f"   💾 Preview saved: {preview_path}")
+    
+    return bw
+
+# ============ MAIN WORKFLOW ============
+
+def setup_paint_window():
+    # <<< HÀM NÀY ĐƯỢC VIẾT LẠI HOÀN TOÀN ĐỂ ĐẢM BẢO ĐỘ TIN CẬY
+    """
+    Mở, tìm, và chắc chắn phóng to cửa sổ Paint.
+    """
+    print("\n" + "="*70)
+    print("🎨 SETUP PAINT WINDOW (RELIABLE)")
+    print("="*70)
+    
+    # 1. Đóng tất cả các tiến trình Paint cũ
+    print("\n   🧹 Closing old Paint processes...")
+    try:
+        subprocess.run(['taskkill', '/F', '/IM', 'mspaint.exe'], capture_output=True, timeout=3)
+        time.sleep(1)
+    except Exception as e:
+        print(f"      (Info) No old Paint process found or could not kill: {e}")
+
+    # 2. Mở một tiến trình Paint mới
+    print("   🚀 Opening a new Paint instance...")
+    subprocess.Popen(['mspaint'])
+    time.sleep(4) # Chờ cho Paint có thời gian khởi động
+
+    # 3. Tìm cửa sổ Paint vừa mở
+    print("   🔍 Searching for the Paint window...")
+    paint_window = None
+    # Thử tìm trong vài giây, vì cửa sổ có thể xuất hiện chậm
+    for _ in range(5):
+        # Tìm kiếm các tiêu đề phổ biến của Paint
+        windows = gw.getWindowsWithTitle('Untitled - Paint') + gw.getWindowsWithTitle('Paint')
+        if windows:
+            paint_window = windows[0]
+            print(f"   ✅ Found window: '{paint_window.title}'")
+            break
+        time.sleep(1)
+
     if not paint_window:
+        raise Exception("Fatal Error: Could not find the Paint window after opening it.")
+
+    # 4. Kích hoạt và Phóng to cửa sổ một cách chắc chắn
+    print("   📐 Activating and Maximizing window...")
+    paint_window.activate()
+    time.sleep(0.5)
+
+    if not paint_window.isMaximized:
+        paint_window.maximize()
+        print("      Window was not maximized. Sent maximize command.")
+        time.sleep(1) # Chờ cho hiệu ứng phóng to hoàn tất
+    else:
+        print("      Window is already maximized.")
+
+    # 5. Chụp lại màn hình sau khi đã chắc chắn phóng to
+    print("   📸 Taking screenshot of the maximized and ready window...")
+    return screenshot_full()
+
+
+def execute_drawing(reference_image_path: str):
+    """Quy trình thực thi vẽ chính."""
+    global SCALE_FACTOR
+    
+    print("\n" + "="*70)
+    print("🎨 DRAWING EXECUTION (CV-POWERED)")
+    print("="*70)
+    
+    SCALE_FACTOR = get_screen_scale_factor()
+    bw_image = preprocess_image(reference_image_path, max_size=150)
+    paint_screenshot = setup_paint_window()
+    
+    interface = detect_paint_interface(paint_screenshot)
+    
+    canvas = interface.get('canvas_area', {})
+    pencil = interface.get('tools', {}).get('pencil', {})
+    black = interface.get('colors', {}).get('black', {})
+    
+    print(f"   ✅ Canvas found: {canvas}")
+    print(f"   ✅ Pencil found: {pencil}")
+    print(f"   ✅ Black color found: {black}")
+    print(f"   🖼️ Debug image saved at: {interface.get('debug', {}).get('path')}")
+    
+    if not all([canvas, pencil, black]):
+        print("\n❌ LỖI: Không thể xác định đầy đủ giao diện Paint bằng CV.")
+        print("   Vui lòng kiểm tra file debug/ui_detect_debug.png.")
+        print("   Hãy chắc chắn ảnh mẫu trong 'templates/' cắt chuẩn và Paint đang ở đúng trạng thái.")
+        raise Exception("Cannot detect Paint interface properly by CV!")
+    
+    draw_pixel_by_pixel_runs(
+        bw_image,
+        canvas['x'],
+        canvas['y'],
+        pencil,
+        black
+    )
+    
+    print("\n   💾 Saving final result...")
+    time.sleep(1)
+    
+    final_screenshot = screenshot_full()
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_path = f"drawing_final_{timestamp}.png"
+    final_screenshot.save(output_path)
+    
+    print(f"   ✅ Saved: {output_path}")
+    
+    print("\n" + "="*70)
+    print("🎉 MISSION COMPLETE! DRAWING FINISHED!")
+    print("="*70)
+
+def draw_pixel_by_pixel_runs(bw_image: np.ndarray, canvas_x: int, canvas_y: int, 
+                             pencil_pos: Dict, black_pos: Dict):
+    """Vẽ theo các đoạn pixel liên tiếp (nhanh hơn)."""
+    print("\n" + "="*70)
+    print("✏️  RUN-LENGTH DRAWING (OPTIMIZED)")
+    print("="*70)
+    
+    print(f"\n   🖊️  Selecting pencil...")
+    slow_click(pencil_pos['x'], pencil_pos['y'])
+    
+    print(f"   🎨 Selecting black color...")
+    slow_click(black_pos['x'], black_pos['y'])
+    
+    print(f"\n   ✍️  Drawing {bw_image.shape[1]}x{bw_image.shape[0]} image...")
+    
+    h, w = bw_image.shape
+    total_runs = 0
+    original_pause = pyautogui.PAUSE
+    pyautogui.PAUSE = 0.001
+    
+    for y in range(h):
+        row = bw_image[y]
+        x = 0
+        while x < w:
+            if row[x] == 0:
+                start_x = x
+                while x < w and row[x] == 0: x += 1
+                end_x = x - 1
+                
+                canvas_start_x, canvas_y_pos, canvas_end_x = canvas_x + start_x, canvas_y + y, canvas_x + end_x
+                
+                scaled_start_x, scaled_y = scale_coords(canvas_start_x, canvas_y_pos)
+                scaled_end_x, _ = scale_coords(canvas_end_x, canvas_y_pos)
+                
+                pyautogui.moveTo(scaled_start_x, scaled_y)
+                pyautogui.mouseDown()
+                if scaled_start_x != scaled_end_x:
+                    pyautogui.moveTo(scaled_end_x, scaled_y)
+                pyautogui.mouseUp()
+                
+                total_runs += 1
+            else:
+                x += 1
+    
+    pyautogui.PAUSE = original_pause
+    print(f"\n   ✅ Drawing completed with {total_runs} runs.")
+
+# ============ MAIN ============
+
+def main():
+    print("""
+╔═══════════════════════════════════════════════════════════╗
+║          🎨 ANIME STORY STUDIO V7.3                       ║
+║          Reliable Window Maximize + CV-Powered            ║
+╚═══════════════════════════════════════════════════════════╝
+    """)
+    
+    character_name = input("🎭 Nhập tên nhân vật (VD: luffy, doraemon): ").strip() or "luffy"
+    
+    image_folder = "images"
+    image_path = os.path.join(image_folder, f"{character_name}.jpg")
+    
+    if not os.path.exists(image_path):
+        image_path = os.path.join(image_folder, f"{character_name}.png")
+    
+    if not os.path.exists(image_path):
+        print(f"\n❌ Không tìm thấy ảnh: {image_path}")
         return
-
-    # Xác định trung tâm vùng vẽ (ước lượng)
-    # Dựa trên cửa sổ đã phóng to
-    canvas_center_x = paint_window.left + (paint_window.width // 2)
-    canvas_center_y = paint_window.top + (paint_window.height // 2) + 50 # Dịch xuống 1 chút
-
-    print(">>> Bắt đầu vẽ khuôn mặt...")
     
-    # 1. Vẽ đầu (màu đen)
-    select_color(paint_window, 'black')
-    print("   - Vẽ đầu...")
-    head_radius = 200
-    draw_circle_robust(canvas_center_x, canvas_center_y, head_radius)
-    time.sleep(0.5)
-
-    # 2. Vẽ khuôn mặt bên trong
-    print("   - Vẽ khuôn mặt...")
-    face_radius = 160
-    draw_circle_robust(canvas_center_x, canvas_center_y + 20, face_radius)
-    time.sleep(0.5)
+    print(f"\n✅ Found image: {image_path}")
     
-    # 3. Vẽ mắt
-    print("   - Vẽ mắt...")
-    eye_radius = 35
-    eye_offset_x = 45
-    eye_y = canvas_center_y - 70
-    draw_circle_robust(canvas_center_x - eye_offset_x, eye_y, eye_radius) # Mắt trái
-    draw_circle_robust(canvas_center_x + eye_offset_x, eye_y, eye_radius) # Mắt phải
-    
-    # Vẽ tròng đen
-    pyautogui.click(canvas_center_x - eye_offset_x + 15, eye_y)
-    pyautogui.click(canvas_center_x + eye_offset_x - 15, eye_y)
-    time.sleep(0.5)
-
-    # 4. Vẽ mũi (màu đỏ)
-    select_color(paint_window, 'red')
-    print("   - Vẽ mũi...")
-    nose_radius = 20
-    nose_y = canvas_center_y - 15
-    draw_circle_robust(canvas_center_x, nose_y, nose_radius)
-    time.sleep(0.5)
-    
-    # 5. Vẽ miệng và đường giữa (quay lại màu đen)
-    select_color(paint_window, 'black')
-    print("   - Vẽ miệng...")
-    pyautogui.moveTo(canvas_center_x, nose_y + nose_radius)
-    pyautogui.dragTo(canvas_center_x, canvas_center_y + 80, duration=0.4)
-    pyautogui.moveTo(canvas_center_x - 120, canvas_center_y + 30)
-    pyautogui.dragTo(canvas_center_x + 120, canvas_center_y + 30, duration=0.7)
-    time.sleep(0.5)
-
-    # 6. Vẽ râu
-    print("   - Vẽ râu...")
-    whisker_start_x_left = canvas_center_x - 80
-    whisker_start_x_right = canvas_center_x + 80
-    whisker_y_base = canvas_center_y + 20
-    whisker_length = 100
-    
-    # Râu trái
-    pyautogui.moveTo(whisker_start_x_left, whisker_y_base - 20)
-    pyautogui.dragRel(-whisker_length, -15, duration=0.3)
-    pyautogui.moveTo(whisker_start_x_left, whisker_y_base)
-    pyautogui.dragRel(-whisker_length, 0, duration=0.3)
-    pyautogui.moveTo(whisker_start_x_left, whisker_y_base + 20)
-    pyautogui.dragRel(-whisker_length, 15, duration=0.3)
-
-    # Râu phải
-    pyautogui.moveTo(whisker_start_x_right, whisker_y_base - 20)
-    pyautogui.dragRel(whisker_length, -15, duration=0.3)
-    pyautogui.moveTo(whisker_start_x_right, whisker_y_base)
-    pyautogui.dragRel(whisker_length, 0, duration=0.3)
-    pyautogui.moveTo(whisker_start_x_right, whisker_y_base + 20)
-    pyautogui.dragRel(whisker_length, 15, duration=0.3)
-    
-    print("\n   ✓ Hoàn thành bản vẽ Doraemon!")
-
-# --- THỰC THI SCRIPT ---
-
-if __name__ == "__main__":
-    print("=== DEMO NÂNG CẤP: LLM VẼ DORAEMON ===")
-    print("!!! Sẽ bắt đầu sau 5 giây. Vui lòng không chạm vào máy tính.")
+    print("\n⚠️  CHUỘT SẼ DI CHUYỂN TỰ ĐỘNG!")
+    print("⚠️  VẼ TỪNG PIXEL - CÓ THỂ MẤT VÀI PHÚT!")
+    print("\n⏳ Bắt đầu sau 5 giây...")
     
     for i in range(5, 0, -1):
-        print(f"Bắt đầu trong {i}...")
+        print(f"   {i}...")
         time.sleep(1)
-        
-    paint_window_info = open_and_prepare_paint()
-    if paint_window_info:
-        draw_doraemon_smart(paint_window_info)
     
-    print("\n=== KẾT THÚC DEMO ===")
+    try:
+        execute_drawing(image_path)
+    except Exception as e:
+        print(f"\n💥 Error: {e}")
+        traceback.print_exc()
+
+if __name__ == "__main__":
+    main()
