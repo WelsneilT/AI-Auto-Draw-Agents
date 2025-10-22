@@ -21,7 +21,7 @@ from typing import Dict, Tuple
 import traceback
 import pygetwindow as gw # <<< THÊM THƯ VIỆN ĐỂ ĐIỀU KHIỂN CỬA SỔ
 from paint_cv_detector import detect_paint_interface_cv
-
+from llm_helper import GeminiAssistant, interactive_character_selection
 # Load environment
 load_dotenv()
 
@@ -257,28 +257,45 @@ def draw_pixel_by_pixel_runs(bw_image: np.ndarray, canvas_x: int, canvas_y: int,
 def main():
     print("""
 ╔═══════════════════════════════════════════════════════════╗
-║          🎨 ANIME STORY STUDIO V7.3                       ║
-║          Reliable Window Maximize + CV-Powered            ║
+║          🎨 ANIME STORY STUDIO V8.0                       ║
+║          Gemini-Powered Character Recognition             ║
 ╚═══════════════════════════════════════════════════════════╝
     """)
     
-    character_name = input("🎭 Nhập tên nhân vật (VD: luffy, doraemon): ").strip() or "luffy"
+    # Khởi tạo Gemini
+    gemini = GeminiAssistant(model_name="gemini-2.5-flash")  # Hoặc gemini-1.5-pro
     
-    image_folder = "images"
-    image_path = os.path.join(image_folder, f"{character_name}.jpg")
+    # Cho phép user mô tả nhân vật bằng ngôn ngữ tự nhiên
+    image_path = interactive_character_selection(gemini)
     
-    if not os.path.exists(image_path):
-        image_path = os.path.join(image_folder, f"{character_name}.png")
-    
-    if not os.path.exists(image_path):
-        print(f"\n❌ Không tìm thấy ảnh: {image_path}")
+    if not image_path:
+        print("\n❌ Không thể tiếp tục vì không tìm thấy ảnh.")
         return
     
-    print(f"\n✅ Found image: {image_path}")
+    # (TÙY CHỌN) Phân tích ảnh để tối ưu tham số
+    optimize = input("\n🤖 Cho phép Gemini tối ưu tham số vẽ? (y/n): ").strip().lower()
+    
+    if optimize == 'y':
+        print("\n   🔬 Gemini đang phân tích ảnh...")
+        params = gemini.analyze_image_for_drawing(image_path)
+        
+        print(f"\n   📊 Đề xuất từ Gemini:")
+        print(f"      Kích thước: {params['max_size']}px")
+        print(f"      Ngưỡng: {params['threshold']}")
+        print(f"      Độ phức tạp: {params['complexity']}")
+        print(f"      Thời gian ước tính: {params['estimated_time_minutes']} phút")
+        
+        for rec in params['recommendations']:
+            print(f"      💡 {rec}")
+        
+        apply = input("\n   ✅ Áp dụng? (y/n): ").strip().lower()
+        if apply == 'y':
+            # Sẽ dùng params này trong preprocess_image
+            # (Cần sửa hàm preprocess_image để nhận tham số)
+            pass
     
     print("\n⚠️  CHUỘT SẼ DI CHUYỂN TỰ ĐỘNG!")
-    print("⚠️  VẼ TỪNG PIXEL - CÓ THỂ MẤT VÀI PHÚT!")
-    print("\n⏳ Bắt đầu sau 5 giây...")
+    print("⏳ Bắt đầu sau 5 giây...")
     
     for i in range(5, 0, -1):
         print(f"   {i}...")
