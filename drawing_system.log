@@ -32,3 +32,313 @@
 2025-10-23 01:22:19,700 [INFO]    Final score: 0.34
 2025-10-23 01:22:19,701 [INFO]    Suggestions: 
 2025-10-23 01:22:19,701 [INFO] ======================================================================
+2025-10-23 17:42:32,184 [INFO] 
+======================================================================
+2025-10-23 17:42:32,185 [INFO] ======================================================================
+2025-10-23 17:42:32,186 [INFO]    Opening Paint...
+2025-10-23 17:42:54,443 [INFO]    Processing image with OpenCV...
+2025-10-23 17:42:54,462 [INFO] 
+   Attempt 1/2
+2025-10-23 17:42:54,463 [INFO]       3...
+2025-10-23 17:42:55,464 [INFO]       2...
+2025-10-23 17:42:56,465 [INFO]       1...
+2025-10-23 17:42:57,467 [INFO]    Scale: 2.578, Offset: (911.8, 300.0)
+2025-10-23 17:42:57,467 [INFO]    Setting up pencil tool...
+2025-10-23 17:43:12,439 [INFO]    Adjusting strategy based on quality metrics...
+2025-10-23 17:43:12,439 [INFO]    Clearing canvas...
+2025-10-23 17:43:13,344 [INFO] 
+   Attempt 2/2
+2025-10-23 17:43:13,346 [INFO]       3...
+2025-10-23 17:43:14,346 [INFO]       2...
+2025-10-23 17:43:15,347 [INFO]       1...
+2025-10-23 17:43:16,350 [INFO]    Scale: 2.578, Offset: (911.8, 300.0)
+2025-10-23 17:43:16,350 [INFO]    Setting up pencil tool...
+2025-10-23 17:43:31,826 [INFO] 
+======================================================================
+2025-10-23 17:43:31,827 [INFO]    Final score: 0.34
+2025-10-23 17:43:31,827 [INFO]    Suggestions: 
+2025-10-23 17:43:31,827 [INFO] ======================================================================
+2025-10-23 21:43:13,585 [INFO] 
+======================================================================
+2025-10-23 21:43:13,588 [INFO] ======================================================================
+2025-10-23 21:43:13,589 [INFO]    Opening Paint...
+2025-10-23 21:43:32,357 [INFO]    Processing image with OpenCV...
+2025-10-23 21:43:32,364 [INFO] 
+   Attempt 1/2
+2025-10-23 21:43:32,365 [INFO]       3...
+2025-10-23 21:43:33,365 [INFO]       2...
+2025-10-23 21:43:34,366 [INFO]       1...
+2025-10-23 21:43:35,370 [INFO]    Scale: 2.578, Offset: (911.8, 300.0)
+2025-10-23 21:43:35,372 [INFO]    Setting up pencil tool...
+2025-10-23 21:44:01,812 [INFO]    Adjusting strategy based on quality metrics...
+2025-10-23 21:44:01,813 [INFO]    Clearing canvas...
+2025-10-23 21:44:02,717 [INFO] 
+   Attempt 2/2
+2025-10-23 21:44:02,718 [INFO]       3...
+2025-10-23 21:44:03,719 [INFO]       2...
+2025-10-23 21:44:04,719 [INFO]       1...
+2025-10-23 21:44:05,721 [INFO]    Scale: 2.578, Offset: (911.8, 300.0)
+2025-10-23 21:44:05,721 [INFO]    Setting up pencil tool...
+2025-10-23 21:44:20,142 [INFO] 
+======================================================================
+2025-10-23 21:44:20,144 [INFO]    Final score: 0.34
+2025-10-23 21:44:20,145 [INFO]    Suggestions: increase the level of detail extraction, improve edge detection algorithm, use more sophisticated contour tracing techniques, add context awareness to recognize and draw specific shapes
+2025-10-23 21:44:20,145 [INFO] ======================================================================
+2025-10-23 21:57:17,750 [INFO] 
+======================================================================
+2025-10-23 21:57:17,751 [INFO] ======================================================================
+2025-10-23 21:57:17,751 [INFO]    Opening Paint...
+2025-10-23 21:57:38,257 [INFO]    Processing image with OpenCV...
+2025-10-23 21:57:38,263 [INFO] 
+   Attempt 1/2
+2025-10-23 21:57:38,264 [INFO]       3...
+2025-10-23 21:57:39,264 [INFO]       2...
+2025-10-23 21:57:40,267 [INFO]       1...
+2025-10-23 21:57:41,269 [INFO]    Scale: 2.578, Offset: (911.8, 300.0)
+2025-10-23 21:57:41,269 [INFO]    Setting up pencil tool...
+2025-10-23 21:57:53,976 [INFO]    Adjusting strategy based on quality metrics...
+2025-10-23 21:57:53,976 [INFO]    Clearing canvas...
+2025-10-23 21:57:54,881 [INFO] 
+   Attempt 2/2
+2025-10-23 21:57:54,882 [INFO]       3...
+2025-10-23 21:57:55,882 [INFO]       2...
+2025-10-23 21:57:56,883 [INFO]       1...
+2025-10-23 21:57:57,885 [INFO]    Scale: 2.578, Offset: (911.8, 300.0)
+2025-10-23 21:57:57,885 [INFO]    Setting up pencil tool...
+2025-10-23 21:58:14,564 [INFO] 
+======================================================================
+2025-10-23 21:58:14,565 [INFO]    Final score: 0.34
+2025-10-23 21:58:14,565 [INFO]    Suggestions: 
+2025-10-23 21:58:14,565 [INFO] ======================================================================
+2025-10-23 22:00:35,350 [INFO] 
+======================================================================
+2025-10-23 22:00:35,350 [INFO] ======================================================================
+2025-10-23 22:00:35,350 [INFO]    Opening Paint...
+2025-10-23 22:00:58,442 [INFO]    Processing image with OpenCV...
+2025-10-23 22:00:58,448 [INFO] 
+   Attempt 1/2
+2025-10-23 22:00:58,449 [INFO]       3...
+2025-10-23 22:00:59,450 [INFO]       2...
+2025-10-23 22:01:00,450 [INFO]       1...
+2025-10-23 22:01:01,452 [INFO]    Scale: 2.578, Offset: (911.8, 300.0)
+2025-10-23 22:01:01,452 [INFO]    Setting up pencil tool...
+2025-10-23 22:01:14,856 [INFO]    Adjusting strategy based on quality metrics...
+2025-10-23 22:01:14,856 [INFO]    Clearing canvas...
+2025-10-23 22:01:15,761 [INFO] 
+   Attempt 2/2
+2025-10-23 22:01:15,762 [INFO]       3...
+2025-10-23 22:01:16,762 [INFO]       2...
+2025-10-23 22:01:17,763 [INFO]       1...
+2025-10-23 22:01:18,764 [INFO]    Scale: 2.578, Offset: (911.8, 300.0)
+2025-10-23 22:01:18,764 [INFO]    Setting up pencil tool...
+2025-10-23 22:01:33,979 [INFO] 
+======================================================================
+2025-10-23 22:01:33,979 [INFO]    Final score: 0.34
+2025-10-23 22:01:33,979 [INFO]    Suggestions: 
+2025-10-23 22:01:33,979 [INFO] ======================================================================
+2025-10-23 22:05:04,042 [INFO] 🔍 Vision Agent initialized
+2025-10-23 22:05:04,042 [INFO] 🎯 Strategy Agent initialized
+2025-10-23 22:05:04,043 [INFO] 🎨 Color Agent initialized
+2025-10-23 22:05:04,043 [INFO] ✅ Quality Agent initialized
+2025-10-23 22:05:04,043 [INFO] 🎭 Multi-Agent Orchestrator initialized
+2025-10-23 22:05:04,043 [INFO] 
+======================================================================
+2025-10-23 22:05:04,043 [INFO] 🎨 HYBRID DRAWING SYSTEM V4.0 - FIXED
+2025-10-23 22:05:04,043 [INFO] ======================================================================
+2025-10-23 22:05:04,044 [INFO] 
+📍 PHASE 1: Setup Paint
+2025-10-23 22:05:04,044 [INFO]    Opening Paint...
+2025-10-23 22:05:08,145 [INFO]    ✅ Canvas region: {'x': 25, 'y': 192, 'width': 2508, 'height': 1360}
+2025-10-23 22:05:08,145 [INFO] ✏️ Execution Agent initialized
+2025-10-23 22:05:08,146 [INFO] 
+📍 PHASE 2: Vision Analysis
+2025-10-23 22:05:08,146 [INFO] 🔍 [VISION AGENT] Analyzing: images/luffy.jpg
+2025-10-23 22:05:14,022 [ERROR]    ❌ Vision Agent failed: 'anime' is not a valid DrawingStyle
+2025-10-23 22:07:16,865 [INFO] 🔍 Vision Agent initialized
+2025-10-23 22:07:16,865 [INFO] 🎯 Strategy Agent initialized
+2025-10-23 22:07:16,865 [INFO] 🎨 Color Agent initialized
+2025-10-23 22:07:16,865 [INFO] ✅ Quality Agent initialized
+2025-10-23 22:07:16,865 [INFO] 🎭 Multi-Agent Orchestrator initialized
+2025-10-23 22:07:16,865 [INFO] 
+======================================================================
+2025-10-23 22:07:16,866 [INFO] 🎨 HYBRID DRAWING SYSTEM V4.0 - FIXED
+2025-10-23 22:07:16,866 [INFO] ======================================================================
+2025-10-23 22:07:16,866 [INFO] 
+📍 PHASE 1: Setup Paint
+2025-10-23 22:07:16,866 [INFO]    Opening Paint...
+2025-10-23 22:07:20,946 [INFO]    ✅ Canvas region: {'x': 25, 'y': 192, 'width': 2508, 'height': 1360}
+2025-10-23 22:07:20,946 [INFO] ✏️ Execution Agent initialized
+2025-10-23 22:07:20,946 [INFO] 
+📍 PHASE 2: Vision Analysis
+2025-10-23 22:07:20,946 [INFO] 🔍 [VISION AGENT] Analyzing: images/luffy.jpg
+2025-10-23 22:07:26,150 [INFO]    ✅ Subject: Monkey D. Luffy
+2025-10-23 22:07:26,150 [INFO]    ✅ Complexity: medium
+2025-10-23 22:07:26,150 [INFO]    ✅ Estimated contours: 200
+2025-10-23 22:07:26,150 [INFO] 
+📍 PHASE 3: Strategy Planning
+2025-10-23 22:07:26,151 [INFO] 🎯 [STRATEGY AGENT] Planning drawing strategy...
+2025-10-23 22:07:26,151 [INFO]    Using optimized strategy
+2025-10-23 22:07:26,151 [INFO]    ✅ Blur: 5, Canny: 30-100
+2025-10-23 22:07:26,151 [INFO]    ✅ Min area: 50, Max contours: 1000
+2025-10-23 22:07:26,151 [INFO] 
+📍 PHASE 4: Color Extraction
+2025-10-23 22:07:26,151 [INFO] 🎨 [COLOR AGENT] Extracting 7 colors...
+2025-10-23 22:07:28,843 [INFO]    ✅ Extracted 7 colors
+2025-10-23 22:07:28,843 [INFO]    ✅ Mapped to Paint palette
+2025-10-23 22:07:28,843 [INFO] 
+📍 PHASE 5: Image Processing
+2025-10-23 22:07:28,843 [INFO]    Processing image with OpenCV...
+2025-10-23 22:07:28,847 [INFO]    ✅ Processed: 10 contours
+2025-10-23 22:07:28,847 [INFO]    ✅ Image size: 236x419
+2025-10-23 22:07:28,847 [INFO] 
+📍 PHASE 6: Execution
+2025-10-23 22:07:28,848 [INFO]    ⚠️ Drawing starts in 3 seconds...
+2025-10-23 22:07:28,848 [INFO]       3...
+2025-10-23 22:07:29,848 [INFO]       2...
+2025-10-23 22:07:30,849 [INFO]       1...
+2025-10-23 22:07:31,850 [INFO] ✏️ [EXECUTION AGENT] Starting drawing...
+2025-10-23 22:07:31,850 [INFO]    📐 Scale: 2.759
+2025-10-23 22:07:31,850 [INFO]    📐 Offset: (953.4, 294.0)
+2025-10-23 22:07:31,851 [INFO]    📐 Canvas: 2508x1360
+2025-10-23 22:07:31,851 [INFO]    🔧 Optimizing contour order...
+2025-10-23 22:07:31,851 [INFO]    ✅ Optimized 10 contours
+2025-10-23 22:07:31,851 [INFO]    🎨 Drawing 10 contours...
+2025-10-23 22:07:47,433 [INFO]    Progress: 10/10 (100.0%)
+2025-10-23 22:07:47,433 [INFO]    ✅ Drawing completed!
+2025-10-23 22:07:47,433 [INFO] 
+📍 PHASE 7: Quality Check
+2025-10-23 22:07:47,434 [INFO] ✅ [QUALITY AGENT] Evaluating quality...
+2025-10-23 22:07:47,579 [INFO]    ✅ Overall: 0.35
+2025-10-23 22:07:47,579 [INFO]    ✅ Edge: 0.04
+2025-10-23 22:07:47,579 [INFO]    ✅ Complete: 1.00
+2025-10-23 22:07:47,580 [INFO] 
+======================================================================
+2025-10-23 22:07:47,580 [INFO] 🎉 DRAWING COMPLETED!
+2025-10-23 22:07:47,580 [INFO]    📊 Final score: 0.35
+2025-10-23 22:07:47,580 [INFO]    📊 Edge accuracy: 0.04
+2025-10-23 22:07:47,580 [INFO]    📊 Completeness: 1.00
+2025-10-23 22:07:47,581 [INFO] ======================================================================
+2025-10-23 22:08:36,919 [INFO] 🔍 Vision Agent initialized
+2025-10-23 22:08:36,919 [INFO] 🎯 Strategy Agent initialized
+2025-10-23 22:08:36,920 [INFO] 🎨 Color Agent initialized
+2025-10-23 22:08:36,920 [INFO] ✅ Quality Agent initialized
+2025-10-23 22:08:36,920 [INFO] 🎭 Multi-Agent Orchestrator initialized
+2025-10-23 22:08:36,920 [INFO] 
+======================================================================
+2025-10-23 22:08:36,920 [INFO] 🎨 HYBRID DRAWING SYSTEM V4.0 - FIXED
+2025-10-23 22:08:36,920 [INFO] ======================================================================
+2025-10-23 22:08:36,921 [INFO] 
+📍 PHASE 1: Setup Paint
+2025-10-23 22:08:36,921 [INFO]    Opening Paint...
+2025-10-23 22:08:41,003 [INFO]    ✅ Canvas region: {'x': 25, 'y': 192, 'width': 2508, 'height': 1360}
+2025-10-23 22:08:41,004 [INFO] ✏️ Execution Agent initialized
+2025-10-23 22:08:41,004 [INFO] 
+📍 PHASE 2: Vision Analysis
+2025-10-23 22:08:41,004 [INFO] 🔍 [VISION AGENT] Analyzing: images/luffy.jpg
+2025-10-23 22:08:45,649 [INFO]    ✅ Subject: Monkey D. Luffy
+2025-10-23 22:08:45,649 [INFO]    ✅ Complexity: medium
+2025-10-23 22:08:45,649 [INFO]    ✅ Estimated contours: 200
+2025-10-23 22:08:45,649 [INFO] 
+📍 PHASE 3: Strategy Planning
+2025-10-23 22:08:45,649 [INFO] 🎯 [STRATEGY AGENT] Planning drawing strategy...
+2025-10-23 22:08:45,649 [INFO]    Using optimized strategy
+2025-10-23 22:08:45,649 [INFO]    ✅ Blur: 5, Canny: 30-100
+2025-10-23 22:08:45,650 [INFO]    ✅ Min area: 50, Max contours: 1000
+2025-10-23 22:08:45,650 [INFO] 
+📍 PHASE 4: Color Extraction
+2025-10-23 22:08:45,650 [INFO] 🎨 [COLOR AGENT] Extracting 7 colors...
+2025-10-23 22:08:47,985 [INFO]    ✅ Extracted 7 colors
+2025-10-23 22:08:47,985 [INFO]    ✅ Mapped to Paint palette
+2025-10-23 22:08:47,985 [INFO] 
+📍 PHASE 5: Image Processing
+2025-10-23 22:08:47,986 [INFO]    Processing image with OpenCV...
+2025-10-23 22:08:47,991 [INFO]    ✅ Processed: 10 contours
+2025-10-23 22:08:47,991 [INFO]    ✅ Image size: 236x419
+2025-10-23 22:08:47,991 [INFO] 
+📍 PHASE 6: Execution
+2025-10-23 22:08:47,991 [INFO]    ⚠️ Drawing starts in 3 seconds...
+2025-10-23 22:08:47,991 [INFO]       3...
+2025-10-23 22:08:48,992 [INFO]       2...
+2025-10-23 22:08:49,992 [INFO]       1...
+2025-10-23 22:08:50,993 [INFO] ✏️ [EXECUTION AGENT] Starting drawing...
+2025-10-23 22:08:50,993 [INFO]    📐 Scale: 2.759
+2025-10-23 22:08:50,993 [INFO]    📐 Offset: (953.4, 294.0)
+2025-10-23 22:08:50,993 [INFO]    📐 Canvas: 2508x1360
+2025-10-23 22:08:50,994 [INFO]    🔧 Optimizing contour order...
+2025-10-23 22:08:50,994 [INFO]    ✅ Optimized 10 contours
+2025-10-23 22:08:50,994 [INFO]    🎨 Drawing 10 contours...
+2025-10-23 22:09:06,579 [INFO]    Progress: 10/10 (100.0%)
+2025-10-23 22:09:06,579 [INFO]    ✅ Drawing completed!
+2025-10-23 22:09:06,579 [INFO] 
+📍 PHASE 7: Quality Check
+2025-10-23 22:09:06,579 [INFO] ✅ [QUALITY AGENT] Evaluating quality...
+2025-10-23 22:09:06,725 [INFO]    ✅ Overall: 0.35
+2025-10-23 22:09:06,725 [INFO]    ✅ Edge: 0.04
+2025-10-23 22:09:06,725 [INFO]    ✅ Complete: 1.00
+2025-10-23 22:09:06,726 [INFO] 
+======================================================================
+2025-10-23 22:09:06,726 [INFO] 🎉 DRAWING COMPLETED!
+2025-10-23 22:09:06,727 [INFO]    📊 Final score: 0.35
+2025-10-23 22:09:06,727 [INFO]    📊 Edge accuracy: 0.04
+2025-10-23 22:09:06,727 [INFO]    📊 Completeness: 1.00
+2025-10-23 22:09:06,727 [INFO] ======================================================================
+2025-10-23 22:16:30,088 [ERROR] ❌ GEMINI_API_KEY not found in .env file!
+2025-10-23 22:17:17,196 [INFO] ✅ Image loaded: C:\Users\Hi\Documents\IAI - UET\AI-Auto-Draw-Agents\images\luffy.jpg
+2025-10-23 22:17:29,220 [INFO] 🔍 Enhanced Vision Agent initialized
+2025-10-23 22:17:29,220 [INFO] 🎯 Enhanced Strategy Agent initialized
+2025-10-23 22:17:29,220 [INFO] 🎨 Color Agent initialized
+2025-10-23 22:17:29,221 [INFO] ✅ Quality Agent initialized
+2025-10-23 22:17:29,221 [INFO] 🎭 Multi-Agent Orchestrator V5.0 initialized
+2025-10-23 22:17:29,221 [INFO] 
+======================================================================
+2025-10-23 22:17:29,221 [INFO] 🎨 HYBRID DRAWING SYSTEM V5.0 - ANIME OPTIMIZED
+2025-10-23 22:17:29,221 [INFO] ======================================================================
+2025-10-23 22:17:29,221 [INFO] 
+📍 PHASE 1: Setup Paint
+2025-10-23 22:17:29,221 [INFO]    🎨 Opening Microsoft Paint...
+2025-10-23 22:22:53,737 [INFO] ✅ Image loaded: C:\Users\Hi\Documents\IAI - UET\AI-Auto-Draw-Agents\images\luffy.jpg
+2025-10-23 22:22:54,985 [INFO] 🔍 Enhanced Vision Agent initialized
+2025-10-23 22:22:54,985 [INFO] 🎯 Enhanced Strategy Agent initialized
+2025-10-23 22:22:54,986 [INFO] 🎨 Color Agent initialized
+2025-10-23 22:22:54,986 [INFO] ✅ Quality Agent initialized
+2025-10-23 22:22:54,986 [INFO] 🎭 Multi-Agent Orchestrator V5.0 initialized
+2025-10-23 22:22:54,986 [INFO] 
+======================================================================
+2025-10-23 22:22:54,986 [INFO] 🎨 HYBRID DRAWING SYSTEM V5.0 - ANIME OPTIMIZED
+2025-10-23 22:22:54,986 [INFO] ======================================================================
+2025-10-23 22:22:54,986 [INFO] 
+📍 PHASE 1: Setup Paint
+2025-10-23 22:22:54,986 [INFO]    🎨 Opening Microsoft Paint...
+2025-10-23 22:34:07,169 [WARNING] 
+⚠️ Drawing interrupted by user
+2025-10-23 22:34:29,485 [ERROR] ❌ OPENAI_API_KEY not found in .env file!
+2025-10-23 22:34:29,486 [INFO] 💡 Add this to your .env file:
+2025-10-23 22:34:29,486 [INFO]    OPENAI_API_KEY=sk-...
+2025-10-23 22:34:57,359 [INFO] ✅ Image loaded: C:\Users\Hi\Documents\IAI - UET\AI-Auto-Draw-Agents\images\luffy.jpg
+2025-10-23 22:34:59,305 [INFO] 🔍 OpenAI Vision Agent initialized (GPT-4 Vision)
+2025-10-23 22:34:59,305 [INFO] 🎯 Enhanced Strategy Agent initialized
+2025-10-23 22:34:59,305 [INFO] 🎨 Color Agent initialized
+2025-10-23 22:34:59,496 [INFO] ✅ OpenAI Quality Agent initialized
+2025-10-23 22:34:59,497 [INFO] 🎭 Multi-Agent Orchestrator V5.0 (OpenAI) initialized
+2025-10-23 22:34:59,497 [INFO] 
+======================================================================
+2025-10-23 22:34:59,497 [INFO] 🎨 HYBRID DRAWING SYSTEM V5.0 - OPENAI VERSION
+2025-10-23 22:34:59,497 [INFO] ======================================================================
+2025-10-23 22:34:59,498 [INFO] 
+📍 PHASE 1: Setup Paint
+2025-10-23 22:34:59,498 [INFO]    🎨 Opening Microsoft Paint...
+2025-10-23 22:43:19,149 [INFO] ✅ Image loaded: C:\Users\Hi\Documents\IAI - UET\AI-Auto-Draw-Agents\images\luffy.jpg
+2025-10-23 22:43:20,798 [INFO] 🔍 OpenAI Vision Agent initialized (GPT-4 Vision)
+2025-10-23 22:43:20,798 [INFO] 🎯 Enhanced Strategy Agent initialized
+2025-10-23 22:43:20,798 [INFO] 🎨 Color Agent initialized
+2025-10-23 22:43:20,981 [INFO] ✅ OpenAI Quality Agent initialized
+2025-10-23 22:43:20,981 [INFO] 🎭 Multi-Agent Orchestrator V5.0 (OpenAI) initialized
+2025-10-23 22:43:20,981 [INFO] 
+======================================================================
+2025-10-23 22:43:20,982 [INFO] 🎨 HYBRID DRAWING SYSTEM V5.0 - OPENAI VERSION
+2025-10-23 22:43:20,982 [INFO] ======================================================================
+2025-10-23 22:43:20,982 [INFO] 
+📍 PHASE 1: Setup Paint
+2025-10-23 22:43:20,982 [INFO]    🎨 Opening Microsoft Paint...
+2025-10-23 22:44:38,438 [WARNING] 
+⚠️ Drawing interrupted by user
