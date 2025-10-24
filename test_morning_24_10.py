@@ -1205,7 +1205,7 @@ def main():
     orchestrator = MultiAgentOrchestrator(api_key)
     
     # Example usage
-    image_path = "images/luffy.jpg"  # Replace with your image
+    image_path = "images/doraemon_clean.jpg"  # Replace with your image
     
     if not os.path.exists(image_path):
         logger.error(f"❌ Image not found: {image_path}")
@@ -1215,4 +1215,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    

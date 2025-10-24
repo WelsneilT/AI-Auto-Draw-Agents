@@ -1927,3 +1927,473 @@ AttributeError: module 'cv2' has no attribute 'tsp'
 ======================================================================
 2025-10-24 08:51:08,928 [INFO] ✅ LLM-ENHANCED DRAWING COMPLETED!
 2025-10-24 08:51:08,929 [INFO] ======================================================================
+2025-10-24 09:01:54,034 [INFO] 🔍 Enhanced OpenAI Vision Agent initialized
+2025-10-24 09:01:54,268 [INFO] 🎯 LLM-Enhanced Strategy Agent initialized
+2025-10-24 09:01:54,485 [INFO] 🖼️ LLM-Enhanced Image Processor initialized
+2025-10-24 09:01:54,820 [INFO] ✅ Enhanced OpenAI Quality Agent initialized
+2025-10-24 09:01:54,820 [INFO] 🎭 Multi-Agent Orchestrator V6.0 (Full LLM) initialized
+2025-10-24 09:01:54,820 [INFO] 
+======================================================================
+2025-10-24 09:01:54,821 [INFO] 🎨 STARTING LLM-ENHANCED DRAWING: doraemon.jpg
+2025-10-24 09:01:54,821 [INFO] ======================================================================
+2025-10-24 09:01:54,821 [INFO] 
+📍 PHASE 1: Setup Paint
+2025-10-24 09:01:54,822 [INFO]    🎨 Opening Microsoft Paint...
+2025-10-24 09:01:59,833 [INFO]    ✅ Canvas: 2310x1300
+2025-10-24 09:02:00,677 [INFO] ✏️ LLM-Enhanced Execution Agent initialized
+2025-10-24 09:02:00,679 [INFO] 
+📍 PHASE 2: OpenAI Vision Analysis
+2025-10-24 09:02:00,680 [INFO] 🔍 [VISION AGENT] Analyzing: images/doraemon.jpg
+2025-10-24 09:02:00,691 [WARNING]    ⚠️ Resizing large image (1280x720)...
+2025-10-24 09:02:00,714 [INFO]    ✅ Resized to 1024x576
+2025-10-24 09:02:00,730 [INFO]    ⏳ Calling OpenAI GPT-4o-mini with enhanced prompt...
+2025-10-24 09:02:06,198 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:02:06,208 [INFO]    ⚡ Response in 5.48s
+2025-10-24 09:02:06,223 [INFO]    ✅ Subject: A cartoon character with a round head, large eyes, and a small nose, wearing a blue outfit with a red collar and a bell. The character has a white face and a small heart above its head.
+2025-10-24 09:02:06,224 [INFO]    ✅ Is Anime: True
+2025-10-24 09:02:06,225 [INFO]    ✅ Complexity: simple
+2025-10-24 09:02:06,225 [INFO]    ✅ Priority Regions: ['head', 'body', 'eyes']
+2025-10-24 09:02:06,226 [INFO] 
+📍 PHASE 3: LLM-Enhanced Strategy Planning
+2025-10-24 09:02:06,228 [INFO] 🎯 [STRATEGY AGENT] Planning with LLM assistance...
+2025-10-24 09:02:06,229 [INFO]    ⏳ Asking LLM for optimal parameters...
+2025-10-24 09:02:09,979 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:02:09,988 [INFO]    ✅ LLM recommended: Canny=10-40
+2025-10-24 09:02:09,988 [INFO]    ✅ Max contours: 2000
+2025-10-24 09:02:09,989 [INFO]    ✅ Strategy built from LLM recommendations
+2025-10-24 09:02:09,989 [INFO] 
+📍 PHASE 4: LLM-Enhanced Image Processing
+2025-10-24 09:02:09,990 [INFO]    🎨 Processing with LLM-enhanced pipeline...
+2025-10-24 09:02:10,010 [INFO]       ✓ CLAHE applied
+2025-10-24 09:02:10,063 [INFO]       ✓ Bilateral filter applied
+2025-10-24 09:02:10,064 [INFO]       ✓ Morphological gradient applied
+2025-10-24 09:02:10,109 [INFO]       ✓ Scale 1 (10-40): Found 4485 contours
+2025-10-24 09:02:10,184 [INFO]       ✓ Scale 2 (5-20): Found 6488 contours
+2025-10-24 09:02:10,221 [INFO]       ✓ Scale 3 (20-80): Found 2452 contours
+2025-10-24 09:02:10,506 [INFO]    ✅ Final contours: 180, Image size: 1280x720
+2025-10-24 09:02:10,510 [INFO] 
+📍 PHASE 5: LLM-Guided Drawing Execution
+2025-10-24 09:02:10,510 [INFO]    ⚠️ Starting in 3 seconds...
+2025-10-24 09:02:10,510 [INFO]       3...
+2025-10-24 09:02:11,511 [INFO]       2...
+2025-10-24 09:02:12,512 [INFO]       1...
+2025-10-24 09:02:13,513 [INFO] ✏️ [EXECUTION AGENT] Starting LLM-guided drawing...
+2025-10-24 09:02:13,514 [INFO]    📐 Scale: 1.534, Offset: (273.2, 297.8)
+2025-10-24 09:02:13,522 [INFO]    🎨 Drawing 180 contours with adaptive speed...
+2025-10-24 09:02:39,585 [INFO]    Progress: 50/180 (27.8%)
+2025-10-24 09:03:09,879 [INFO]    Progress: 100/180 (55.6%)
+2025-10-24 09:03:42,970 [INFO]    Progress: 150/180 (83.3%)
+2025-10-24 09:04:00,717 [INFO]    Progress: 180/180 (100.0%)
+2025-10-24 09:04:00,717 [INFO]    ✅ Drawing completed!
+2025-10-24 09:04:00,718 [INFO] 
+📍 PHASE 6: LLM-Enhanced Quality Check
+2025-10-24 09:04:00,718 [INFO] ✅ [QUALITY AGENT] Evaluating with LLM assistance...
+2025-10-24 09:04:06,526 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:04:06,527 [INFO]    ✅ LLM assessment: The drawn version captures the essence of the character but needs refinement in detail and color.
+2025-10-24 09:04:06,527 [INFO]    ✅ Strengths: The basic shape of the character is recognizable., The overall composition is clear and well-structured.
+2025-10-24 09:04:06,555 [INFO]    ✅ Overall: 0.43, Edge: 0.02, Complete: 0.99
+2025-10-24 09:04:06,555 [INFO]    ✅ Region scores: {'top': 0.5103705559731607, 'middle': 0.3419143521578436, 'bottom': 0.5099865726753934}
+2025-10-24 09:04:06,558 [INFO] 
+📍 PHASE 7: Comprehensive Report
+2025-10-24 09:04:06,558 [INFO] 
+======================================================================
+2025-10-24 09:04:06,559 [INFO] 📊 COMPREHENSIVE DRAWING REPORT
+2025-10-24 09:04:06,559 [INFO] ======================================================================
+2025-10-24 09:04:06,560 [INFO] 
+🔍 IMAGE ANALYSIS:
+2025-10-24 09:04:06,560 [INFO]    Subject: A cartoon character with a round head, large eyes, and a small nose, wearing a blue outfit with a red collar and a bell. The character has a white face and a small heart above its head.
+2025-10-24 09:04:06,561 [INFO]    Style: cartoon
+2025-10-24 09:04:06,561 [INFO]    Complexity: simple
+2025-10-24 09:04:06,562 [INFO]    Is Anime: True
+2025-10-24 09:04:06,562 [INFO]    Priority Regions: head, body, eyes
+2025-10-24 09:04:06,563 [INFO]    Detail Levels: {
+      "face": "high",
+      "hair": "low",
+      "body": "medium",
+      "background": "low"
+}
+2025-10-24 09:04:06,563 [INFO] 
+🎯 STRATEGY:
+2025-10-24 09:04:06,564 [INFO]    Preprocessing: {
+      "blur_kernel": 3,
+      "canny_low": 10,
+      "canny_high": 40,
+      "use_bilateral": true,
+      "use_clahe": true,
+      "multi_scale": true,
+      "use_morphology": true
+}
+2025-10-24 09:04:06,564 [INFO]    Contour Params: {
+      "min_area": 2,
+      "epsilon_factor": 0.001,
+      "max_contours": 2000,
+      "hierarchical": true,
+      "filter_nested": true
+}
+2025-10-24 09:04:06,565 [INFO]    Optimization Level: 3
+2025-10-24 09:04:06,565 [INFO]    Drawing Order: head → body → eyes → collar → heart
+2025-10-24 09:04:06,566 [INFO]    Region Strategies: {
+      "face": {
+            "canny_low": 5,
+            "canny_high": 25,
+            "min_area": 1,
+            "priority": 1
+      },
+      "hair": {
+            "canny_low": 8,
+            "canny_high": 35,
+            "min_area": 2,
+            "priority": 2
+      },
+      "body": {
+            "canny_low": 12,
+            "canny_high": 45,
+            "min_area": 3,
+            "priority": 3
+      }
+}
+2025-10-24 09:04:06,566 [INFO]    Adaptive Speed: {
+      "face": 0.02,
+      "hair": 0.01,
+      "body": 0.005
+}
+2025-10-24 09:04:06,567 [INFO] 
+📈 EXECUTION:
+2025-10-24 09:04:06,567 [INFO]    Total Contours Drawn: 180
+2025-10-24 09:04:06,567 [INFO]    Estimated Time: 400s
+2025-10-24 09:04:06,568 [INFO] 
+✅ QUALITY METRICS:
+2025-10-24 09:04:06,568 [INFO]    Overall Score: 42.55%
+2025-10-24 09:04:06,568 [INFO]    Edge Accuracy: 2.09%
+2025-10-24 09:04:06,569 [INFO]    Completeness: 99.25%
+2025-10-24 09:04:06,569 [INFO]    Smoothness: 18.12%
+2025-10-24 09:04:06,569 [INFO] 
+   Region Scores:
+2025-10-24 09:04:06,570 [INFO]       top: 51.04%
+2025-10-24 09:04:06,570 [INFO]       middle: 34.19%
+2025-10-24 09:04:06,570 [INFO]       bottom: 51.00%
+2025-10-24 09:04:06,571 [INFO] 
+💡 LLM SUGGESTIONS FOR IMPROVEMENT:
+2025-10-24 09:04:06,571 [INFO]    1. Enhance the line quality to make it smoother and more defined.
+2025-10-24 09:04:06,572 [INFO]    2. Add color to the character's features to match the original image more closely.
+2025-10-24 09:04:06,572 [INFO]    3. Incorporate shading or highlights to give the character more depth and dimension.
+2025-10-24 09:04:06,572 [INFO]    4. Ensure the proportions of the head and body are more balanced and consistent with the original.
+2025-10-24 09:04:06,573 [INFO]    5. Refine the details of the eyes and mouth for better expression.
+2025-10-24 09:04:06,573 [INFO] 
+======================================================================
+2025-10-24 09:04:06,573 [INFO] 
+======================================================================
+2025-10-24 09:04:06,573 [INFO] ✅ LLM-ENHANCED DRAWING COMPLETED!
+2025-10-24 09:04:06,573 [INFO] ======================================================================
+2025-10-24 09:06:01,669 [INFO] 🔍 Enhanced OpenAI Vision Agent initialized
+2025-10-24 09:06:01,906 [INFO] 🎯 LLM-Enhanced Strategy Agent initialized
+2025-10-24 09:06:02,141 [INFO] 🖼️ LLM-Enhanced Image Processor initialized
+2025-10-24 09:06:02,474 [INFO] ✅ Enhanced OpenAI Quality Agent initialized
+2025-10-24 09:06:02,475 [INFO] 🎭 Multi-Agent Orchestrator V6.0 (Full LLM) initialized
+2025-10-24 09:06:02,475 [INFO] 
+======================================================================
+2025-10-24 09:06:02,476 [INFO] 🎨 STARTING LLM-ENHANCED DRAWING: doraemon_clean.jpg
+2025-10-24 09:06:02,476 [INFO] ======================================================================
+2025-10-24 09:06:02,476 [INFO] 
+📍 PHASE 1: Setup Paint
+2025-10-24 09:06:02,476 [INFO]    🎨 Opening Microsoft Paint...
+2025-10-24 09:06:07,489 [INFO]    ✅ Canvas: 2310x1300
+2025-10-24 09:06:08,341 [INFO] ✏️ LLM-Enhanced Execution Agent initialized
+2025-10-24 09:06:08,342 [INFO] 
+📍 PHASE 2: OpenAI Vision Analysis
+2025-10-24 09:06:08,342 [INFO] 🔍 [VISION AGENT] Analyzing: images/doraemon_clean.jpg
+2025-10-24 09:06:08,400 [INFO]    ⏳ Calling OpenAI GPT-4o-mini with enhanced prompt...
+2025-10-24 09:06:12,917 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:06:12,930 [INFO]    ⚡ Response in 4.53s
+2025-10-24 09:06:12,931 [INFO]    ✅ Subject: A cartoon character with a round face, large eyes, and a big smile, wearing a blue outfit with a red collar and a bell.
+2025-10-24 09:06:12,944 [INFO]    ✅ Is Anime: True
+2025-10-24 09:06:12,944 [INFO]    ✅ Complexity: simple
+2025-10-24 09:06:12,945 [INFO]    ✅ Priority Regions: ['face', 'body', 'accessories']
+2025-10-24 09:06:12,945 [INFO] 
+📍 PHASE 3: LLM-Enhanced Strategy Planning
+2025-10-24 09:06:12,945 [INFO] 🎯 [STRATEGY AGENT] Planning with LLM assistance...
+2025-10-24 09:06:12,946 [INFO]    ⏳ Asking LLM for optimal parameters...
+2025-10-24 09:06:17,782 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:06:17,784 [INFO]    ✅ LLM recommended: Canny=10-40
+2025-10-24 09:06:17,784 [INFO]    ✅ Max contours: 2000
+2025-10-24 09:06:17,785 [INFO]    ✅ Strategy built from LLM recommendations
+2025-10-24 09:06:17,785 [INFO] 
+📍 PHASE 4: LLM-Enhanced Image Processing
+2025-10-24 09:06:17,785 [INFO]    🎨 Processing with LLM-enhanced pipeline...
+2025-10-24 09:06:17,792 [INFO]       ✓ CLAHE applied
+2025-10-24 09:06:17,817 [INFO]       ✓ Bilateral filter applied
+2025-10-24 09:06:17,818 [INFO]       ✓ Morphological gradient applied
+2025-10-24 09:06:17,834 [INFO]       ✓ Scale 1 (10-40): Found 781 contours
+2025-10-24 09:06:17,864 [INFO]       ✓ Scale 2 (5-20): Found 1839 contours
+2025-10-24 09:06:17,878 [INFO]       ✓ Scale 3 (20-80): Found 644 contours
+2025-10-24 09:06:17,899 [INFO]    ✅ Final contours: 44, Image size: 564x667
+2025-10-24 09:06:17,900 [WARNING]    ⚠️ Only 44 contours found, asking LLM for adjustment...
+2025-10-24 09:06:20,033 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:06:20,044 [INFO]    ✅ LLM suggests adjustment: The current Canny thresholds may be too high, potentially missing finer edges. Lowering the thresholds can help capture more contours. Additionally, reducing the minimum area can include smaller contours that might be relevant.
+2025-10-24 09:06:20,045 [INFO]    🔄 Reprocessing with adjusted parameters...
+2025-10-24 09:06:20,110 [INFO]    ✅ After adjustment: 94 contours
+2025-10-24 09:06:20,113 [INFO] 
+📍 PHASE 5: LLM-Guided Drawing Execution
+2025-10-24 09:06:20,114 [INFO]    ⚠️ Starting in 3 seconds...
+2025-10-24 09:06:20,114 [INFO]       3...
+2025-10-24 09:06:21,115 [INFO]       2...
+2025-10-24 09:06:22,117 [INFO]       1...
+2025-10-24 09:06:23,118 [INFO] ✏️ [EXECUTION AGENT] Starting LLM-guided drawing...
+2025-10-24 09:06:23,119 [INFO]    📐 Scale: 1.657, Offset: (787.8, 297.5)
+2025-10-24 09:06:23,122 [INFO]    🎨 Drawing 94 contours with adaptive speed...
+2025-10-24 09:07:14,039 [INFO]    Progress: 50/94 (53.2%)
+2025-10-24 09:07:49,591 [INFO]    Progress: 94/94 (100.0%)
+2025-10-24 09:07:49,591 [INFO]    ✅ Drawing completed!
+2025-10-24 09:07:49,592 [INFO] 
+📍 PHASE 6: LLM-Enhanced Quality Check
+2025-10-24 09:07:49,592 [INFO] ✅ [QUALITY AGENT] Evaluating with LLM assistance...
+2025-10-24 09:07:53,874 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:07:53,875 [INFO]    ✅ LLM assessment: The drawn version captures the essence of the character but needs improvements in color and detail.
+2025-10-24 09:07:53,875 [INFO]    ✅ Strengths: The overall pose of the character is well-captured., The basic shapes are accurately represented.
+2025-10-24 09:07:53,887 [INFO]    ✅ Overall: 0.42, Edge: 0.03, Complete: 1.00
+2025-10-24 09:07:53,888 [INFO]    ✅ Region scores: {'top': 0.5161135622482196, 'middle': 0.38927272007099967, 'bottom': 0.5132838005178372}
+2025-10-24 09:07:53,889 [INFO] 
+📍 PHASE 7: Comprehensive Report
+2025-10-24 09:07:53,890 [INFO] 
+======================================================================
+2025-10-24 09:07:53,891 [INFO] 📊 COMPREHENSIVE DRAWING REPORT
+2025-10-24 09:07:53,892 [INFO] ======================================================================
+2025-10-24 09:07:53,892 [INFO] 
+🔍 IMAGE ANALYSIS:
+2025-10-24 09:07:53,893 [INFO]    Subject: A cartoon character with a round face, large eyes, and a big smile, wearing a blue outfit with a red collar and a bell.
+2025-10-24 09:07:53,893 [INFO]    Style: cartoon
+2025-10-24 09:07:53,894 [INFO]    Complexity: simple
+2025-10-24 09:07:53,894 [INFO]    Is Anime: True
+2025-10-24 09:07:53,895 [INFO]    Priority Regions: face, body, accessories
+2025-10-24 09:07:53,895 [INFO]    Detail Levels: {
+      "face": "high",
+      "hair": "low",
+      "body": "medium",
+      "background": "low"
+}
+2025-10-24 09:07:53,896 [INFO] 
+🎯 STRATEGY:
+2025-10-24 09:07:53,896 [INFO]    Preprocessing: {
+      "blur_kernel": 3,
+      "canny_low": 5,
+      "canny_high": 20,
+      "use_bilateral": true,
+      "use_clahe": true,
+      "multi_scale": true,
+      "use_morphology": true
+}
+2025-10-24 09:07:53,897 [INFO]    Contour Params: {
+      "min_area": 1,
+      "epsilon_factor": 0.001,
+      "max_contours": 2000,
+      "hierarchical": true,
+      "filter_nested": true
+}
+2025-10-24 09:07:53,897 [INFO]    Optimization Level: 3
+2025-10-24 09:07:53,898 [INFO]    Drawing Order: face → body → details
+2025-10-24 09:07:53,898 [INFO]    Region Strategies: {
+      "face": {
+            "canny_low": 5,
+            "canny_high": 25,
+            "min_area": 1,
+            "priority": 1
+      },
+      "hair": {
+            "canny_low": 8,
+            "canny_high": 35,
+            "min_area": 2,
+            "priority": 2
+      },
+      "body": {
+            "canny_low": 12,
+            "canny_high": 45,
+            "min_area": 3,
+            "priority": 3
+      }
+}
+2025-10-24 09:07:53,899 [INFO]    Adaptive Speed: {
+      "face": 0.02,
+      "hair": 0.01,
+      "body": 0.005
+}
+2025-10-24 09:07:53,900 [INFO] 
+📈 EXECUTION:
+2025-10-24 09:07:53,900 [INFO]    Total Contours Drawn: 94
+2025-10-24 09:07:53,900 [INFO]    Estimated Time: 400s
+2025-10-24 09:07:53,901 [INFO] 
+✅ QUALITY METRICS:
+2025-10-24 09:07:53,901 [INFO]    Overall Score: 42.48%
+2025-10-24 09:07:53,902 [INFO]    Edge Accuracy: 2.85%
+2025-10-24 09:07:53,902 [INFO]    Completeness: 100.00%
+2025-10-24 09:07:53,903 [INFO]    Smoothness: 10.58%
+2025-10-24 09:07:53,903 [INFO] 
+   Region Scores:
+2025-10-24 09:07:53,903 [INFO]       top: 51.61%
+2025-10-24 09:07:53,904 [INFO]       middle: 38.93%
+2025-10-24 09:07:53,904 [INFO]       bottom: 51.33%
+2025-10-24 09:07:53,904 [INFO] 
+💡 LLM SUGGESTIONS FOR IMPROVEMENT:
+2025-10-24 09:07:53,905 [INFO]    1. Enhance the color saturation of the blue outfit to match the original image more closely.
+2025-10-24 09:07:53,905 [INFO]    2. Add more detail to the eyes to make them appear larger and more expressive.
+2025-10-24 09:07:53,906 [INFO]    3. Refine the outline of the character to make it smoother and more polished.
+2025-10-24 09:07:53,906 [INFO] 
+======================================================================
+2025-10-24 09:07:53,907 [INFO] 
+======================================================================
+2025-10-24 09:07:53,907 [INFO] ✅ LLM-ENHANCED DRAWING COMPLETED!
+2025-10-24 09:07:53,907 [INFO] ======================================================================
+2025-10-24 09:09:19,176 [INFO] 🔍 Enhanced OpenAI Vision Agent initialized
+2025-10-24 09:09:19,455 [INFO] 🎯 LLM-Enhanced Strategy Agent initialized
+2025-10-24 09:09:19,718 [INFO] 🖼️ LLM-Enhanced Image Processor initialized
+2025-10-24 09:09:19,979 [INFO] ✅ Enhanced OpenAI Quality Agent initialized
+2025-10-24 09:09:19,979 [INFO] 🎭 Multi-Agent Orchestrator V6.0 (Full LLM) initialized
+2025-10-24 09:09:19,979 [INFO] 
+======================================================================
+2025-10-24 09:09:19,979 [INFO] 🎨 STARTING LLM-ENHANCED DRAWING: doraemon_clean.jpg
+2025-10-24 09:09:19,980 [INFO] ======================================================================
+2025-10-24 09:09:19,980 [INFO] 
+📍 PHASE 1: Setup Paint
+2025-10-24 09:09:19,980 [INFO]    🎨 Opening Microsoft Paint...
+2025-10-24 09:09:24,993 [INFO]    ✅ Canvas: 2310x1300
+2025-10-24 09:09:25,810 [INFO] ✏️ LLM-Enhanced Execution Agent initialized
+2025-10-24 09:09:25,810 [INFO] 
+📍 PHASE 2: OpenAI Vision Analysis
+2025-10-24 09:09:25,810 [INFO] 🔍 [VISION AGENT] Analyzing: images/doraemon_clean.jpg
+2025-10-24 09:09:25,819 [WARNING]    ⚠️ Resizing large image (676x1200)...
+2025-10-24 09:09:25,832 [INFO]    ✅ Resized to 577x1024
+2025-10-24 09:09:25,846 [INFO]    ⏳ Calling OpenAI GPT-4o-mini with enhanced prompt...
+2025-10-24 09:09:31,738 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:09:31,749 [INFO]    ⚡ Response in 5.90s
+2025-10-24 09:09:31,750 [INFO]    ✅ Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue ears and a red collar with a bell.
+2025-10-24 09:09:31,750 [INFO]    ✅ Is Anime: True
+2025-10-24 09:09:31,752 [INFO]    ✅ Complexity: simple
+2025-10-24 09:09:31,752 [INFO]    ✅ Priority Regions: ['face', 'eyes', 'ears']
+2025-10-24 09:09:31,753 [INFO] 
+📍 PHASE 3: LLM-Enhanced Strategy Planning
+2025-10-24 09:09:31,755 [INFO] 🎯 [STRATEGY AGENT] Planning with LLM assistance...
+2025-10-24 09:09:31,757 [INFO]    ⏳ Asking LLM for optimal parameters...
+2025-10-24 09:09:35,778 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:09:35,780 [INFO]    ✅ LLM recommended: Canny=10-40
+2025-10-24 09:09:35,781 [INFO]    ✅ Max contours: 2000
+2025-10-24 09:09:35,782 [INFO]    ✅ Strategy built from LLM recommendations
+2025-10-24 09:09:35,783 [INFO] 
+📍 PHASE 4: LLM-Enhanced Image Processing
+2025-10-24 09:09:35,784 [INFO]    🎨 Processing with LLM-enhanced pipeline...
+2025-10-24 09:09:35,810 [INFO]       ✓ CLAHE applied
+2025-10-24 09:09:35,923 [INFO]       ✓ Bilateral filter applied
+2025-10-24 09:09:35,926 [INFO]       ✓ Morphological gradient applied
+2025-10-24 09:09:35,941 [INFO]       ✓ Scale 1 (10-40): Found 358 contours
+2025-10-24 09:09:35,972 [INFO]       ✓ Scale 2 (5-20): Found 1584 contours
+2025-10-24 09:09:35,981 [INFO]       ✓ Scale 3 (20-80): Found 93 contours
+2025-10-24 09:09:36,046 [INFO]    ✅ Final contours: 123, Image size: 676x1200
+2025-10-24 09:09:36,048 [INFO] 
+📍 PHASE 5: LLM-Guided Drawing Execution
+2025-10-24 09:09:36,048 [INFO]    ⚠️ Starting in 3 seconds...
+2025-10-24 09:09:36,048 [INFO]       3...
+2025-10-24 09:09:37,050 [INFO]       2...
+2025-10-24 09:09:38,051 [INFO]       1...
+2025-10-24 09:09:39,052 [INFO] ✏️ [EXECUTION AGENT] Starting LLM-guided drawing...
+2025-10-24 09:09:39,053 [INFO]    📐 Scale: 0.921, Offset: (943.8, 297.5)
+2025-10-24 09:09:39,059 [INFO]    🎨 Drawing 123 contours with adaptive speed...
+2025-10-24 09:10:21,102 [INFO]    Progress: 50/123 (40.7%)
+2025-10-24 09:10:57,040 [INFO]    Progress: 100/123 (81.3%)
+2025-10-24 09:11:15,838 [INFO]    Progress: 123/123 (100.0%)
+2025-10-24 09:11:15,839 [INFO]    ✅ Drawing completed!
+2025-10-24 09:11:15,840 [INFO] 
+📍 PHASE 6: LLM-Enhanced Quality Check
+2025-10-24 09:11:15,840 [INFO] ✅ [QUALITY AGENT] Evaluating with LLM assistance...
+2025-10-24 09:11:19,815 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:11:19,817 [INFO]    ✅ LLM assessment: The drawn version captures the essence of the character but needs more detail and color to improve resemblance.
+2025-10-24 09:11:19,817 [INFO]    ✅ Strengths: The playful expression is captured well in both images., The basic outline of the character is recognizable.
+2025-10-24 09:11:19,827 [INFO]    ✅ Overall: 0.27, Edge: 0.02, Complete: 0.56
+2025-10-24 09:11:19,828 [INFO]    ✅ Region scores: {'top': 0.2606561927487161, 'middle': 0.33749916211867154, 'bottom': 0.2821833188646717}
+2025-10-24 09:11:19,829 [INFO] 
+📍 PHASE 7: Comprehensive Report
+2025-10-24 09:11:19,829 [INFO] 
+======================================================================
+2025-10-24 09:11:19,829 [INFO] 📊 COMPREHENSIVE DRAWING REPORT
+2025-10-24 09:11:19,829 [INFO] ======================================================================
+2025-10-24 09:11:19,830 [INFO] 
+🔍 IMAGE ANALYSIS:
+2025-10-24 09:11:19,830 [INFO]    Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue ears and a red collar with a bell.
+2025-10-24 09:11:19,830 [INFO]    Style: cartoon
+2025-10-24 09:11:19,831 [INFO]    Complexity: simple
+2025-10-24 09:11:19,831 [INFO]    Is Anime: True
+2025-10-24 09:11:19,831 [INFO]    Priority Regions: face, eyes, ears
+2025-10-24 09:11:19,831 [INFO]    Detail Levels: {
+      "face": "high",
+      "hair": "low",
+      "body": "medium",
+      "background": "low"
+}
+2025-10-24 09:11:19,832 [INFO] 
+🎯 STRATEGY:
+2025-10-24 09:11:19,832 [INFO]    Preprocessing: {
+      "blur_kernel": 3,
+      "canny_low": 10,
+      "canny_high": 40,
+      "use_bilateral": true,
+      "use_clahe": true,
+      "multi_scale": true,
+      "use_morphology": true
+}
+2025-10-24 09:11:19,832 [INFO]    Contour Params: {
+      "min_area": 2,
+      "epsilon_factor": 0.001,
+      "max_contours": 2000,
+      "hierarchical": true,
+      "filter_nested": true
+}
+2025-10-24 09:11:19,833 [INFO]    Optimization Level: 3
+2025-10-24 09:11:19,835 [INFO]    Drawing Order: face → eyes → ears → collar → background
+2025-10-24 09:11:19,838 [INFO]    Region Strategies: {
+      "face": {
+            "canny_low": 5,
+            "canny_high": 25,
+            "min_area": 1,
+            "priority": 1
+      },
+      "hair": {
+            "canny_low": 8,
+            "canny_high": 35,
+            "min_area": 2,
+            "priority": 2
+      },
+      "body": {
+            "canny_low": 12,
+            "canny_high": 45,
+            "min_area": 3,
+            "priority": 3
+      }
+}
+2025-10-24 09:11:19,838 [INFO]    Adaptive Speed: {
+      "face": 0.02,
+      "hair": 0.01,
+      "body": 0.005
+}
+2025-10-24 09:11:19,839 [INFO] 
+📈 EXECUTION:
+2025-10-24 09:11:19,839 [INFO]    Total Contours Drawn: 123
+2025-10-24 09:11:19,839 [INFO]    Estimated Time: 400s
+2025-10-24 09:11:19,840 [INFO] 
+✅ QUALITY METRICS:
+2025-10-24 09:11:19,840 [INFO]    Overall Score: 26.55%
+2025-10-24 09:11:19,841 [INFO]    Edge Accuracy: 1.66%
+2025-10-24 09:11:19,841 [INFO]    Completeness: 56.24%
+2025-10-24 09:11:19,841 [INFO]    Smoothness: 32.23%
+2025-10-24 09:11:19,841 [INFO] 
+   Region Scores:
+2025-10-24 09:11:19,842 [INFO]       top: 26.07%
+2025-10-24 09:11:19,842 [INFO]       middle: 33.75%
+2025-10-24 09:11:19,842 [INFO]       bottom: 28.22%
+2025-10-24 09:11:19,842 [INFO] 
+💡 LLM SUGGESTIONS FOR IMPROVEMENT:
+2025-10-24 09:11:19,843 [INFO]    1. Add color to the drawn version to match the original character's vibrant palette.
+2025-10-24 09:11:19,843 [INFO]    2. Enhance the roundness of the character's face to better reflect the original's shape.
+2025-10-24 09:11:19,843 [INFO]    3. Increase the size of the eyes to make them more prominent and expressive.
+2025-10-24 09:11:19,843 [INFO] 
+======================================================================
+2025-10-24 09:11:19,844 [INFO] 
+======================================================================
+2025-10-24 09:11:19,844 [INFO] ✅ LLM-ENHANCED DRAWING COMPLETED!
+2025-10-24 09:11:19,844 [INFO] ======================================================================
