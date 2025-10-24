@@ -1,0 +1,93 @@
+2025-10-24 09:32:49,358 [INFO] 🔍 Enhanced OpenAI Vision Agent initialized
+2025-10-24 09:32:49,621 [INFO] 🎯 LLM-Enhanced Strategy Agent initialized
+2025-10-24 09:32:49,854 [INFO] 🖼️ LLM-Enhanced Image Processor initialized
+2025-10-24 09:32:50,082 [INFO] ✏️ LLM-Enhanced Execution Agent initialized
+2025-10-24 09:32:50,305 [INFO] ✅ Enhanced OpenAI Quality Agent initialized
+2025-10-24 09:32:50,324 [WARNING] Could not generate graph visualization: Install pygraphviz to draw graphs: `pip install pygraphviz`.
+2025-10-24 09:32:50,325 [INFO] 
+======================================================================
+2025-10-24 09:32:50,325 [INFO] 🎨 STARTING LANGGRAPH DRAWING: doraemon_clean.jpg
+2025-10-24 09:32:50,325 [INFO] ======================================================================
+2025-10-24 09:32:50,326 [INFO] 
+📍 NODE: Setup Paint
+2025-10-24 09:32:55,336 [INFO]    ✅ Canvas: 2310x1300
+2025-10-24 09:32:55,851 [INFO] 
+📍 NODE: OpenAI Vision Analysis
+2025-10-24 09:32:55,852 [INFO] 🔍 [VISION AGENT] Analyzing: images\doraemon_clean.jpg
+2025-10-24 09:32:55,874 [WARNING]    ⚠️ Resizing large image (676x1200)...
+2025-10-24 09:32:55,919 [INFO]    ✅ Resized to 577x1024
+2025-10-24 09:32:55,947 [INFO]    ⏳ Calling OpenAI GPT-4o-mini with enhanced prompt...
+2025-10-24 09:33:02,440 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:33:02,454 [INFO]    ⚡ Response in 6.51s
+2025-10-24 09:33:02,455 [INFO]    ✅ Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue ears and a red collar with a bell.
+2025-10-24 09:33:02,456 [INFO]    ✅ Is Anime: True
+2025-10-24 09:33:02,456 [INFO]    ✅ Complexity: simple
+2025-10-24 09:33:02,458 [INFO]    ✅ Priority Regions: ['face', 'eyes', 'mouth']
+2025-10-24 09:33:02,460 [INFO] 
+📍 NODE: LLM-Enhanced Strategy Planning
+2025-10-24 09:33:02,464 [INFO] 🎯 [STRATEGY AGENT] Planning with LLM assistance...
+2025-10-24 09:33:02,467 [INFO]    ⏳ Asking LLM for optimal parameters...
+2025-10-24 09:33:09,534 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:33:09,539 [ERROR]    ❌ LLM strategy request failed: 'list' object has no attribute 'message'
+2025-10-24 09:33:09,539 [WARNING]    ⚠️ LLM strategy failed, using enhanced fallback
+2025-10-24 09:33:09,541 [INFO] 
+📍 NODE: LLM-Enhanced Image Processing
+2025-10-24 09:33:09,541 [INFO]    🎨 Processing with LLM-enhanced pipeline...
+2025-10-24 09:33:09,584 [INFO]       ✓ CLAHE applied
+2025-10-24 09:33:09,636 [INFO]       ✓ Bilateral filter applied
+2025-10-24 09:33:09,637 [INFO]       ✓ Morphological gradient applied
+2025-10-24 09:33:09,642 [INFO]       ✓ Scale 1 (20-60): Found 69 contours
+2025-10-24 09:33:09,652 [INFO]       ✓ Scale 2 (10-30): Found 540 contours
+2025-10-24 09:33:09,656 [INFO]       ✓ Scale 3 (40-120): Found 69 contours
+2025-10-24 09:33:09,676 [INFO]    ✅ Final contours: 89, Image size: 676x1200
+2025-10-24 09:33:09,678 [INFO] 
+📍 DECISION: Check for Contours
+2025-10-24 09:33:09,679 [INFO]    ✅ Found 89 contours. Proceeding to drawing.
+2025-10-24 09:33:09,680 [INFO] 
+📍 NODE: LLM-Guided Drawing Execution
+2025-10-24 09:33:09,680 [INFO]    ⚠️ Starting in 3 seconds...
+2025-10-24 09:33:09,681 [INFO]       3...
+2025-10-24 09:33:10,682 [INFO]       2...
+2025-10-24 09:33:11,684 [INFO]       1...
+2025-10-24 09:33:12,685 [INFO] ✏️ [EXECUTION AGENT] Starting LLM-guided drawing...
+2025-10-24 09:33:12,686 [INFO]    📐 Scale: 0.921, Offset: (943.8, 297.5)
+2025-10-24 09:33:12,690 [INFO]    🎨 Drawing 89 contours with adaptive speed...
+2025-10-24 09:33:29,720 [INFO]    Progress: 50/89 (56.2%)
+2025-10-24 09:33:41,336 [INFO]    Progress: 89/89 (100.0%)
+2025-10-24 09:33:41,337 [INFO]    ✅ Drawing completed!
+2025-10-24 09:33:41,337 [INFO] 
+📍 NODE: LLM-Enhanced Quality Check
+2025-10-24 09:33:41,337 [INFO] ✅ [QUALITY AGENT] Evaluating with LLM assistance...
+2025-10-24 09:33:45,886 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 09:33:45,887 [INFO]    ✅ LLM assessment: The drawn version lacks color and detail, making it less appealing compared to the original.
+2025-10-24 09:33:45,887 [INFO]    ✅ Strengths: The basic shape of the character is recognizable., The playful expression is somewhat captured in the drawn version.
+2025-10-24 09:33:45,887 [ERROR]    ❌ Quality evaluation failed: unsupported operand type(s) for //: 'tuple' and 'int'
+2025-10-24 09:33:45,889 [INFO] 
+======================================================================
+2025-10-24 09:33:45,889 [INFO] 📊 COMPREHENSIVE DRAWING REPORT
+2025-10-24 09:33:45,889 [INFO] ======================================================================
+2025-10-24 09:33:45,890 [INFO] 
+🔍 IMAGE ANALYSIS:
+2025-10-24 09:33:45,892 [INFO]    Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue ears and a red collar with a bell.
+2025-10-24 09:33:45,893 [INFO]    Style: cartoon, Complexity: simple
+2025-10-24 09:33:45,893 [INFO]    Priority Regions: face, eyes, mouth
+2025-10-24 09:33:45,912 [INFO] 
+🎯 STRATEGY:
+2025-10-24 09:33:45,918 [INFO]    Preprocessing Params: Canny Low=20, Canny High=60
+2025-10-24 09:33:45,925 [INFO]    Contour Params: Min Area=5, Max Contours=800
+2025-10-24 09:33:45,925 [INFO] 
+📈 EXECUTION:
+2025-10-24 09:33:45,926 [INFO]    Total Contours Drawn: 89
+2025-10-24 09:33:45,927 [INFO] 
+✅ QUALITY METRICS:
+2025-10-24 09:33:45,927 [INFO]    Overall Score: 0.00%
+2025-10-24 09:33:45,927 [INFO]    Edge Accuracy: 0.00%, Completeness: 0.00%
+2025-10-24 09:33:45,928 [INFO] 
+💡 LLM SUGGESTIONS FOR IMPROVEMENT:
+2025-10-24 09:33:45,930 [INFO]    1. Evaluation failed.
+2025-10-24 09:33:45,930 [INFO] 
+======================================================================
+2025-10-24 09:33:45,931 [INFO] 
+======================================================================
+2025-10-24 09:33:45,931 [INFO] ✅ LANGGRAPH DRAWING COMPLETED!
+2025-10-24 09:33:45,932 [INFO] ======================================================================
