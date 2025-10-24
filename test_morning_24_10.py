@@ -275,7 +275,7 @@ Recommend optimal OpenCV parameters for contour detection. Return ONLY valid JSO
         "canny_low": 10,
         "canny_high": 40,
         "min_area": 2,
-        "epsilon_factor": 0.003,
+        "epsilon_factor": 0.001,
         "max_contours": 2000
     }},
     "region_strategies": {{
@@ -313,7 +313,7 @@ Guidelines:
 - Lower Canny thresholds = more details (5-15 for very detailed areas)
 - Higher thresholds = cleaner lines (20-60 for simple areas)
 - min_area: 1-5 (lower = more small details)
-- epsilon_factor: 0.001-0.01 (lower = more accurate contours)
+- epsilon_factor: 0.0005-0.002 (lower = more accurate contours)
 - For anime: prioritize face/eyes with lowest thresholds
 - adaptive_speed: slower (0.02-0.05) for detailed areas, faster (0.005-0.01) for simple areas
 
@@ -1215,3 +1215,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
