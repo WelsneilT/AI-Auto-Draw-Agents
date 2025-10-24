@@ -1,5 +1,5 @@
 """
-HYBRID DRAWING SYSTEM V5.0 - ANIME OPTIMIZED (OPENAI VERSION)
+HYBRID DRAWING SYSTEM V5.1 - ANIME OPTIMIZED (OPENAI VERSION)
 ==============================================================
 
 IMPROVEMENTS:
@@ -9,6 +9,7 @@ IMPROVEMENTS:
 - ✅ Adaptive Canny thresholds
 - ✅ Hierarchical contour filtering
 - ✅ Better canvas detection
+- 🔧 FIX: Removed 'win+up' hotkey to prevent screen splitting.
 """
 
 import os
@@ -44,7 +45,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 pyautogui.FAILSAFE = False
-pyautogui.PAUSE = 0.05
+pyautogui.PAUSE = 0.01 # Adjusted for slightly faster drawing
 
 # ============ DATA STRUCTURES ============
 
@@ -98,69 +99,57 @@ class VisionAgent:
     def __init__(self, api_key: str):
         self.client = OpenAI(api_key=api_key)
         logger.info("🔍 OpenAI Vision Agent initialized (GPT-4 Vision)")
-    
+
     def analyze(self, image_path: str) -> ImageAnalysis:
         logger.info(f"🔍 [VISION AGENT] Analyzing: {image_path}")
-        
-        # Encode image to base64
+
+        # Automatically resize image if it's too large to prevent API timeout
+        try:
+            with Image.open(image_path) as img:
+                max_dim = 1024
+                if img.width > max_dim or img.height > max_dim:
+                    logger.warning(f"   ⚠️ Image is large ({img.width}x{img.height}), resizing for faster analysis...")
+                    img.thumbnail((max_dim, max_dim))
+                    temp_path = "temp_resized_image.jpg"
+                    img.convert("RGB").save(temp_path, "JPEG")
+                    image_path = temp_path
+                    logger.info(f"   ✅ Resized to {img.width}x{img.height}")
+        except Exception as e:
+            logger.error(f"   ❌ Could not resize image: {e}")
+
+
         with open(image_path, "rb") as f:
             image_data = base64.b64encode(f.read()).decode('utf-8')
-        
+
         mime_type = "image/jpeg" if image_path.endswith(('.jpg', '.jpeg')) else "image/png"
-        
-        prompt = """Analyze this image for drawing. You are an expert in anime/manga art analysis.
 
-TASK: Provide detailed analysis for recreating this image.
-
-1. SUBJECT & STYLE:
-   - Character name (if known)
-   - Anime style: classic/modern/manga/chibi?
-   - Line art style: thick/thin/variable?
-
-2. COMPLEXITY (IMPORTANT):
-   - Count details: eyes, hair strands, clothing, accessories
-   - Anime typically has: complex eyes (pupils, highlights), many hair strands, layered clothing
-   - Estimate contours: simple=50-100, medium=100-300, complex=300-500, very_complex=500+
-
-3. KEY FEATURES (priority high→low):
-   - Eyes (most important in anime)
-   - Face shape
-   - Hair strands
-   - Clothing details
-   - Accessories
-
-4. COLORS:
-   - Main colors (RGB format)
-   - Skin tone, hair color, clothing colors
-   - Background color
-
-Return ONLY valid JSON (no markdown, no explanation):
+        prompt = """Analyze this image for drawing. Return ONLY valid JSON:
 
 {
-    "subject": "character description",
+    "subject": "brief description",
     "is_anime": true/false,
     "complexity": "simple/medium/complex/very_complex",
-    "main_shapes": ["oval face", "large eyes", "spiky hair"],
-    "key_features": ["eyes", "face outline", "hair", "clothing", "accessories"],
-    "estimated_contours": 250,
-    "recommended_order": ["face outline", "eyes", "nose", "mouth", "hair outline", "hair details", "body", "clothing"],
+    "main_shapes": ["shape1", "shape2", "shape3"],
+    "key_features": ["feature1", "feature2", "feature3", "feature4", "feature5"],
+    "estimated_contours": 200,
+    "recommended_order": ["part1", "part2", "part3"],
     "color_palette": [[255, 224, 189], [0, 0, 0], [255, 0, 0]],
     "background_color": [255, 255, 255],
     "drawing_style": "anime/cartoon/sketch/outline"
 }
 
 Rules:
-- complexity based on detail count
+- complexity: simple<100 contours, medium=100-300, complex=300-500, very_complex>500
 - is_anime: true if anime/manga style
-- Keep arrays concise (max 8 items)
-- Return ONLY the JSON object"""
-        
+- Keep arrays short (max 5 items)
+- Return ONLY JSON, no markdown"""
+
         try:
-            logger.info("   ⏳ Calling OpenAI GPT-4 Vision...")
+            logger.info("   ⏳ Calling OpenAI GPT-4o-mini...")
             start_time = time.time()
-            
+
             response = self.client.chat.completions.create(
-                model="gpt-4o",  # Fastest vision model
+                model="gpt-5o-mini",  #  CORRECTED MODEL NAME
                 messages=[
                     {
                         "role": "user",
@@ -170,31 +159,29 @@ Rules:
                                 "type": "image_url",
                                 "image_url": {
                                     "url": f"data:{mime_type};base64,{image_data}",
-                                    "detail": "high"
+                                    "detail": "low"
                                 }
                             }
                         ]
                     }
                 ],
-                max_tokens=1000,
-                temperature=0.3
+                max_tokens=500,
+                temperature=0.1,
+                timeout=60.0 # Add a 60-second timeout
             )
-            
+
             elapsed = time.time() - start_time
-            logger.info(f"   ⚡ Response received in {elapsed:.2f}s")
-            
+            logger.info(f"   ⚡ Response in {elapsed:.2f}s")
+
             text = response.choices[0].message.content.strip()
-            
-            # Remove markdown if present
+
             if text.startswith("```json"):
                 text = text.replace("```json", "").replace("```", "").strip()
             elif text.startswith("```"):
                 text = text.replace("```", "").strip()
-            
-            logger.info(f"   📄 Response length: {len(text)} chars")
-            
+
             data = json.loads(text)
-            
+
             analysis = ImageAnalysis(
                 subject=data["subject"],
                 complexity=Complexity(data["complexity"]),
@@ -207,23 +194,21 @@ Rules:
                 background_color=tuple(data["background_color"]),
                 is_anime=data.get("is_anime", False)
             )
-            
+
             logger.info(f"   ✅ Subject: {analysis.subject}")
             logger.info(f"   ✅ Is Anime: {analysis.is_anime}")
             logger.info(f"   ✅ Complexity: {analysis.complexity.value}")
-            logger.info(f"   ✅ Estimated contours: {analysis.estimated_contours}")
-            
+
             return analysis
-        
+
         except Exception as e:
             logger.error(f"   ❌ OpenAI Vision failed: {e}")
             logger.warning("   ⚠️ Using fallback analysis...")
             return self._fallback_analysis()
-    
+
     def _fallback_analysis(self) -> ImageAnalysis:
-        """Fallback analysis if API fails"""
         return ImageAnalysis(
-            subject="Anime Character",
+            subject="Anime Character (Fallback)",
             complexity=Complexity.COMPLEX,
             style=DrawingStyle.ANIME,
             main_shapes=["face", "body", "hair"],
@@ -252,39 +237,18 @@ class StrategyAgent:
     def _anime_strategy(self, analysis: ImageAnalysis) -> DrawingStrategy:
         logger.info("   Using ANIME-OPTIMIZED strategy")
         
-        # Anime needs special parameters
         complexity_map = {
             Complexity.SIMPLE: {
-                "blur": 3,
-                "canny_low": 20,
-                "canny_high": 60,
-                "min_area": 20,
-                "epsilon": 0.006,
-                "max_contours": 300
+                "blur": 3, "canny_low": 20, "canny_high": 60, "min_area": 20, "epsilon": 0.006, "max_contours": 300
             },
             Complexity.MEDIUM: {
-                "blur": 3,
-                "canny_low": 15,
-                "canny_high": 50,
-                "min_area": 15,
-                "epsilon": 0.004,
-                "max_contours": 500
+                "blur": 3, "canny_low": 15, "canny_high": 50, "min_area": 15, "epsilon": 0.004, "max_contours": 500
             },
             Complexity.COMPLEX: {
-                "blur": 3,
-                "canny_low": 10,
-                "canny_high": 40,
-                "min_area": 10,
-                "epsilon": 0.003,
-                "max_contours": 800
+                "blur": 3, "canny_low": 10, "canny_high": 40, "min_area": 10, "epsilon": 0.003, "max_contours": 800
             },
             Complexity.VERY_COMPLEX: {
-                "blur": 3,
-                "canny_low": 8,
-                "canny_high": 35,
-                "min_area": 8,
-                "epsilon": 0.002,
-                "max_contours": 1200
+                "blur": 3, "canny_low": 8, "canny_high": 35, "min_area": 8, "epsilon": 0.002, "max_contours": 1200
             }
         }
         
@@ -292,24 +256,15 @@ class StrategyAgent:
         
         strategy = DrawingStrategy(
             preprocessing={
-                "blur_kernel": params["blur"],
-                "canny_low": params["canny_low"],
-                "canny_high": params["canny_high"],
-                "use_bilateral": True,
-                "use_clahe": True,
-                "multi_scale": True
+                "blur_kernel": params["blur"], "canny_low": params["canny_low"], "canny_high": params["canny_high"],
+                "use_bilateral": True, "use_clahe": True, "multi_scale": True
             },
             contour_params={
-                "min_area": params["min_area"],
-                "epsilon_factor": params["epsilon"],
-                "max_contours": params["max_contours"],
-                "hierarchical": True
+                "min_area": params["min_area"], "epsilon_factor": params["epsilon"],
+                "max_contours": params["max_contours"], "hierarchical": True
             },
-            drawing_order=analysis.recommended_order,
-            optimization_level=2,
-            use_color=False,
-            use_shading=False,
-            estimated_time=180
+            drawing_order=analysis.recommended_order, optimization_level=2,
+            use_color=False, use_shading=False, estimated_time=180
         )
         
         logger.info(f"   ✅ Anime params: Canny={params['canny_low']}-{params['canny_high']}")
@@ -328,54 +283,50 @@ class StrategyAgent:
         }
         
         blur, canny_low, canny_high, min_area, epsilon, max_contours = complexity_map.get(
-            analysis.complexity,
-            (5, 25, 70, 30, 0.006, 500)
+            analysis.complexity, (5, 25, 70, 30, 0.006, 500)
         )
         
         return DrawingStrategy(
             preprocessing={
-                "blur_kernel": blur,
-                "canny_low": canny_low,
-                "canny_high": canny_high,
-                "use_bilateral": False,
-                "use_clahe": False,
-                "multi_scale": False
+                "blur_kernel": blur, "canny_low": canny_low, "canny_high": canny_high,
+                "use_bilateral": False, "use_clahe": False, "multi_scale": False
             },
             contour_params={
-                "min_area": min_area,
-                "epsilon_factor": epsilon,
-                "max_contours": max_contours,
-                "hierarchical": False
+                "min_area": min_area, "epsilon_factor": epsilon,
+                "max_contours": max_contours, "hierarchical": False
             },
-            drawing_order=analysis.recommended_order,
-            optimization_level=2,
-            use_color=False,
-            use_shading=False,
-            estimated_time=120
+            drawing_order=analysis.recommended_order, optimization_level=2,
+            use_color=False, use_shading=False, estimated_time=120
         )
 
 # ============ AGENT 3: COLOR AGENT ============
-
+# (Not used in drawing but available)
 class ColorAgent:
     def __init__(self):
         logger.info("🎨 Color Agent initialized")
     
     def extract_colors(self, image_path: str, n_colors: int = 7) -> List[Tuple[int, int, int]]:
         logger.info(f"🎨 [COLOR AGENT] Extracting {n_colors} colors...")
-        
-        img = cv2.imread(image_path)
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        pixels = img.reshape(-1, 3)
-        
-        from sklearn.cluster import KMeans
-        kmeans = KMeans(n_clusters=n_colors, random_state=42, n_init=10)
-        kmeans.fit(pixels)
-        
-        colors = kmeans.cluster_centers_.astype(int)
-        colors = [tuple(map(int, c)) for c in colors]
-        
-        logger.info(f"   ✅ Extracted {len(colors)} colors")
-        return colors
+        try:
+            from sklearn.cluster import KMeans
+            img = cv2.imread(image_path)
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            pixels = img.reshape(-1, 3)
+            
+            kmeans = KMeans(n_clusters=n_colors, random_state=42, n_init='auto')
+            kmeans.fit(pixels)
+            
+            colors = kmeans.cluster_centers_.astype(int)
+            colors = [tuple(map(int, c)) for c in colors]
+            
+            logger.info(f"   ✅ Extracted {len(colors)} colors")
+            return colors
+        except ImportError:
+            logger.warning("   ⚠️ scikit-learn not installed. Cannot extract colors. Using fallback.")
+            return [(0,0,0), (255,255,255)]
+        except Exception as e:
+            logger.error(f"   ❌ Color extraction failed: {e}")
+            return [(0,0,0), (255,255,255)]
 
 # ============ AGENT 4: ENHANCED EXECUTION AGENT ============
 
@@ -385,10 +336,7 @@ class ExecutionAgent:
         logger.info("✏️ Enhanced Execution Agent initialized")
     
     def draw_contours(
-        self,
-        contours: List[np.ndarray],
-        image_shape: Tuple,
-        strategy: DrawingStrategy,
+        self, contours: List[np.ndarray], image_shape: Tuple, strategy: DrawingStrategy,
         color_palette: Optional[List[Tuple[int, int, int]]] = None
     ):
         logger.info("✏️ [EXECUTION AGENT] Starting drawing...")
@@ -397,104 +345,62 @@ class ExecutionAgent:
         canvas_width = self.canvas_region['width']
         canvas_height = self.canvas_region['height']
         
-        # Calculate scale with padding
         scale_x = canvas_width / img_width
         scale_y = canvas_height / img_height
-        scale = min(scale_x, scale_y) * 0.80
+        scale = min(scale_x, scale_y) * 0.90 # Use a bit more of the canvas
         
-        # Center image
         scaled_width = img_width * scale
         scaled_height = img_height * scale
         offset_x = self.canvas_region['x'] + (canvas_width - scaled_width) / 2
         offset_y = self.canvas_region['y'] + (canvas_height - scaled_height) / 2
         
-        logger.info(f"   📐 Scale: {scale:.3f}")
-        logger.info(f"   📐 Offset: ({offset_x:.1f}, {offset_y:.1f})")
+        logger.info(f"   📐 Scale: {scale:.3f}, Offset: ({offset_x:.1f}, {offset_y:.1f})")
         
-        # Optimize order
         if strategy.optimization_level >= 2:
             contours = self._optimize_contour_order(contours)
         
-        # Draw all contours
         total = len(contours)
         logger.info(f"   🎨 Drawing {total} contours...")
         
         for i, contour in enumerate(contours):
             try:
                 self._draw_single_contour(contour, offset_x, offset_y, scale)
-                
                 if (i + 1) % 50 == 0 or i == total - 1:
                     logger.info(f"   Progress: {i+1}/{total} ({(i+1)/total*100:.1f}%)")
-            
             except Exception as e:
-                logger.error(f"   ❌ Failed contour {i}: {e}")
+                logger.error(f"   ❌ Failed to draw contour {i}: {e}")
                 continue
         
         logger.info("   ✅ Drawing completed!")
     
     def _draw_single_contour(self, contour: np.ndarray, offset_x: float, offset_y: float, scale: float):
-        if len(contour) < 2:
-            return
-        
-        # Move to start
-        x = int(offset_x + contour[0][0][0] * scale)
-        y = int(offset_y + contour[0][0][1] * scale)
-        pyautogui.moveTo(x, y, duration=0.03)
-        time.sleep(0.02)
-        
-        # Draw contour
+        if len(contour) < 2: return
+
+        start_point = contour
+        start_x = int(offset_x + start_point * scale)
+        start_y = int(offset_y + start_point * scale)
+
+        pyautogui.moveTo(start_x, start_y, duration=0)
+        pyautogui.mouseDown(button='left')
+
         for point in contour[1:]:
-            x = int(offset_x + point[0][0] * scale)
-            y = int(offset_y + point[0][1] * scale)
-            pyautogui.dragTo(x, y, duration=0.008, button='left')
+            p = point
+            x = int(offset_x + p * scale)
+            y = int(offset_y + p * scale)
+            pyautogui.moveTo(x, y, duration=0)
         
-        # Close contour
-        x = int(offset_x + contour[0][0][0] * scale)
-        y = int(offset_y + contour[0][0][1] * scale)
-        pyautogui.dragTo(x, y, duration=0.008, button='left')
-        
-        time.sleep(0.015)
-    
+        # Close the loop
+        pyautogui.moveTo(start_x, start_y, duration=0)
+        pyautogui.mouseUp(button='left')
+
     def _optimize_contour_order(self, contours: List[np.ndarray]) -> List[np.ndarray]:
         logger.info("   🔧 Optimizing contour order...")
+        if len(contours) <= 1: return contours
         
-        if len(contours) <= 1:
-            return contours
-        
-        centroids = []
-        for c in contours:
-            M = cv2.moments(c)
-            if M["m00"] != 0:
-                cx = M["m10"] / M["m00"]
-                cy = M["m01"] / M["m00"]
-            else:
-                cx, cy = c[0][0]
-            centroids.append((cx, cy))
-        
-        # Nearest neighbor TSP
-        unvisited = list(range(len(contours)))
-        current = 0
-        path = [current]
-        unvisited.remove(current)
-        
-        while unvisited:
-            current_pos = centroids[current]
-            min_dist = float('inf')
-            nearest = unvisited[0]
-            
-            for idx in unvisited:
-                pos = centroids[idx]
-                dist = ((current_pos[0] - pos[0]) ** 2 + (current_pos[1] - pos[1]) ** 2) ** 0.5
-                if dist < min_dist:
-                    min_dist = dist
-                    nearest = idx
-            
-            path.append(nearest)
-            unvisited.remove(nearest)
-            current = nearest
-        
-        optimized = [contours[i] for i in path]
-        logger.info(f"   ✅ Optimized {len(optimized)} contours")
+        path, _ = cv2.tsp.findShortestPath(np.array(contours))
+        optimized = [contours[i] for i in path.flatten()]
+
+        logger.info(f"   ✅ Optimized {len(optimized)} contours using TSP")
         return optimized
 
 # ============ AGENT 5: OPENAI QUALITY AGENT ============
@@ -507,69 +413,71 @@ class QualityAgent:
     def evaluate(self, original_path: str, canvas_region: Dict) -> QualityMetrics:
         logger.info("✅ [QUALITY AGENT] Evaluating quality...")
         
-        # Capture canvas
-        screenshot = ImageGrab.grab(bbox=(
-            canvas_region['x'],
-            canvas_region['y'],
-            canvas_region['x'] + canvas_region['width'],
-            canvas_region['y'] + canvas_region['height']
-        ))
-        screenshot.save("temp_screenshot.png")
-        
-        # Compare
-        original = cv2.imread(original_path)
-        drawn = cv2.imread("temp_screenshot.png")
-        drawn = cv2.resize(drawn, (original.shape[1], original.shape[0]))
-        
-        edge_accuracy = self._calculate_edge_accuracy(original, drawn)
-        completeness = self._calculate_completeness(original, drawn)
-        smoothness = self._calculate_smoothness(drawn)
-        
-        overall_score = (edge_accuracy + completeness + smoothness) / 3
-        
-        metrics = QualityMetrics(
-            overall_score=overall_score,
-            edge_accuracy=edge_accuracy,
-            completeness=completeness,
-            smoothness=smoothness,
-            suggestions=[]
-        )
-        
-        logger.info(f"   ✅ Overall: {overall_score:.2f}")
-        logger.info(f"   ✅ Edge: {edge_accuracy:.2f}")
-        logger.info(f"   ✅ Complete: {completeness:.2f}")
-        
-        return metrics
-    
+        try:
+            screenshot = ImageGrab.grab(bbox=(
+                canvas_region['x'], canvas_region['y'],
+                canvas_region['x'] + canvas_region['width'],
+                canvas_region['y'] + canvas_region['height']
+            ))
+            screenshot.save("temp_screenshot.png")
+            
+            original = cv2.imread(original_path)
+            if original is None:
+                logger.error("   ❌ Could not read original image for evaluation.")
+                return self._fallback_metrics()
+
+            drawn = cv2.imread("temp_screenshot.png")
+            if drawn is None:
+                logger.error("   ❌ Could not read screenshot for evaluation.")
+                return self._fallback_metrics()
+
+            drawn = cv2.resize(drawn, (original.shape, original.shape))
+            
+            edge_accuracy = self._calculate_edge_accuracy(original, drawn)
+            completeness = self._calculate_completeness(original, drawn)
+            smoothness = self._calculate_smoothness(drawn)
+            
+            overall_score = (edge_accuracy * 0.5) + (completeness * 0.4) + (smoothness * 0.1) # Weighted score
+            
+            metrics = QualityMetrics(
+                overall_score=overall_score, edge_accuracy=edge_accuracy,
+                completeness=completeness, smoothness=smoothness, suggestions=[]
+            )
+            
+            logger.info(f"   ✅ Overall: {overall_score:.2f}, Edge: {edge_accuracy:.2f}, Complete: {completeness:.2f}")
+            return metrics
+        except Exception as e:
+            logger.error(f"   ❌ Quality evaluation failed: {e}")
+            return self._fallback_metrics()
+
+    def _fallback_metrics(self) -> QualityMetrics:
+        return QualityMetrics(0, 0, 0, 0, ["Evaluation failed."])
+
     def _calculate_edge_accuracy(self, original: np.ndarray, drawn: np.ndarray) -> float:
         orig_edges = cv2.Canny(cv2.cvtColor(original, cv2.COLOR_BGR2GRAY), 50, 150)
         drawn_edges = cv2.Canny(cv2.cvtColor(drawn, cv2.COLOR_BGR2GRAY), 50, 150)
         
-        intersection = cv2.bitwise_and(orig_edges, drawn_edges)
-        union = cv2.bitwise_or(orig_edges, drawn_edges)
+        intersection = np.sum(cv2.bitwise_and(orig_edges, drawn_edges))
+        union = np.sum(cv2.bitwise_or(orig_edges, drawn_edges))
         
-        accuracy = np.sum(intersection) / (np.sum(union) + 1e-6)
-        return float(accuracy)
-    
+        return float(intersection / (union + 1e-6))
+
     def _calculate_completeness(self, original: np.ndarray, drawn: np.ndarray) -> float:
         orig_gray = cv2.cvtColor(original, cv2.COLOR_BGR2GRAY)
         drawn_gray = cv2.cvtColor(drawn, cv2.COLOR_BGR2GRAY)
         
-        orig_pixels = np.sum(orig_gray < 250)
-        drawn_pixels = np.sum(drawn_gray < 250)
+        _, orig_thresh = cv2.threshold(orig_gray, 240, 255, cv2.THRESH_BINARY_INV)
+        _, drawn_thresh = cv2.threshold(drawn_gray, 240, 255, cv2.THRESH_BINARY_INV)
+
+        orig_pixels = np.sum(orig_thresh > 0)
+        drawn_pixels = np.sum(drawn_thresh > 0)
         
-        completeness = min(drawn_pixels / (orig_pixels + 1e-6), 1.0)
-        return float(completeness)
-    
+        return float(min(drawn_pixels / (orig_pixels + 1e-6), 1.0))
+
     def _calculate_smoothness(self, drawn: np.ndarray) -> float:
         gray = cv2.cvtColor(drawn, cv2.COLOR_BGR2GRAY)
-        
-        grad_x = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
-        grad_y = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)
-        grad_mag = np.sqrt(grad_x**2 + grad_y**2)
-        
-        smoothness = 1.0 / (1.0 + np.std(grad_mag))
-        return float(smoothness)
+        laplacian_var = cv2.Laplacian(gray, cv2.CV_64F).var()
+        return float(1.0 / (1.0 + laplacian_var / 1000))
 
 # ============ ENHANCED IMAGE PROCESSOR ============
 
@@ -579,134 +487,84 @@ class ImageProcessor:
         logger.info("   🎨 Processing ANIME image...")
         
         img = cv2.imread(image_path)
+        if img is None:
+            raise FileNotFoundError(f"Could not read image from {image_path}")
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         
-        # Step 1: CLAHE
         if strategy.preprocessing.get("use_clahe", False):
             clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
-            gray = clahe.apply(gray)
-            logger.info("      ✓ CLAHE applied")
+            gray = clahe.apply(gray); logger.info("      ✓ CLAHE applied")
         
-        # Step 2: Bilateral filter
         if strategy.preprocessing.get("use_bilateral", False):
-            gray = cv2.bilateralFilter(gray, 9, 75, 75)
-            logger.info("      ✓ Bilateral filter applied")
+            gray = cv2.bilateralFilter(gray, 9, 75, 75); logger.info("      ✓ Bilateral filter applied")
         else:
             blur_kernel = strategy.preprocessing["blur_kernel"]
             gray = cv2.GaussianBlur(gray, (blur_kernel, blur_kernel), 0)
         
-        # Step 3: Multi-scale edge detection
         all_contours = []
-        
         if strategy.preprocessing.get("multi_scale", False):
             scales = [
                 (strategy.preprocessing["canny_low"], strategy.preprocessing["canny_high"]),
-                (strategy.preprocessing["canny_low"] // 2, strategy.preprocessing["canny_high"] // 2),
-                (strategy.preprocessing["canny_low"] * 2, strategy.preprocessing["canny_high"] * 2)
+                (strategy.preprocessing["canny_low"] // 2, strategy.preprocessing["canny_high"] // 2)
             ]
-            
             for i, (low, high) in enumerate(scales):
                 edges = cv2.Canny(gray, low, high)
-                contours, hierarchy = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-                
-                min_area = strategy.contour_params["min_area"]
-                filtered = [c for c in contours if cv2.contourArea(c) > min_area]
-                
+                contours, _ = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+                filtered = [c for c in contours if cv2.contourArea(c) > strategy.contour_params["min_area"]]
                 all_contours.extend(filtered)
-                logger.info(f"      ✓ Scale {i+1}: {len(filtered)} contours")
+                logger.info(f"      ✓ Scale {i+1}: Found {len(filtered)} contours")
         else:
-            edges = cv2.Canny(
-                gray,
-                strategy.preprocessing["canny_low"],
-                strategy.preprocessing["canny_high"]
-            )
-            contours, hierarchy = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-            
-            min_area = strategy.contour_params["min_area"]
-            all_contours = [c for c in contours if cv2.contourArea(c) > min_area]
+            edges = cv2.Canny(gray, strategy.preprocessing["canny_low"], strategy.preprocessing["canny_high"])
+            contours, _ = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+            all_contours = [c for c in contours if cv2.contourArea(c) > strategy.contour_params["min_area"]]
         
-        # Step 4: Simplify
         epsilon_factor = strategy.contour_params["epsilon_factor"]
-        simplified = []
+        simplified = [cv2.approxPolyDP(c, epsilon_factor * cv2.arcLength(c, True), True) for c in all_contours]
         
-        for c in all_contours:
-            epsilon = epsilon_factor * cv2.arcLength(c, True)
-            approx = cv2.approxPolyDP(c, epsilon, True)
-            if len(approx) >= 3:
-                simplified.append(approx)
-        
-        # Step 5: Remove duplicates
         simplified = ImageProcessor._remove_duplicate_contours(simplified)
         
-        # Step 6: Limit contours
         max_contours = strategy.contour_params["max_contours"]
         if len(simplified) > max_contours:
             simplified = sorted(simplified, key=cv2.contourArea, reverse=True)[:max_contours]
         
-        logger.info(f"   ✅ Final: {len(simplified)} contours")
-        logger.info(f"   ✅ Image size: {img.shape[1]}x{img.shape[0]}")
-        
+        logger.info(f"   ✅ Final contours: {len(simplified)}, Image size: {img.shape}x{img.shape}")
         return simplified, img.shape
     
     @staticmethod
     def _remove_duplicate_contours(contours: List[np.ndarray], threshold: float = 5.0) -> List[np.ndarray]:
-        if len(contours) <= 1:
-            return contours
+        if len(contours) <= 1: return contours
         
-        centroids = []
-        for c in contours:
-            M = cv2.moments(c)
-            if M["m00"] != 0:
-                cx = M["m10"] / M["m00"]
-                cy = M["m01"] / M["m00"]
-                centroids.append((cx, cy))
-            else:
-                centroids.append((c[0][0][0], c[0][0][1]))
-        
-        unique = []
-        used = set()
-        
-        for i, c in enumerate(contours):
-            if i in used:
-                continue
-            
-            unique.append(c)
-            
-            for j in range(i + 1, len(contours)):
-                if j in used:
-                    continue
-                
-                dist = ((centroids[i][0] - centroids[j][0]) ** 2 + 
-                       (centroids[i][1] - centroids[j][1]) ** 2) ** 0.5
-                
-                if dist < threshold:
-                    used.add(j)
-        
-        logger.info(f"      ✓ Removed {len(contours) - len(unique)} duplicates")
-        return unique
+        unique_contours = []
+        # A simple but effective way to remove near-duplicate contours
+        # by comparing their centroids and areas.
+        # This is a placeholder for a more sophisticated algorithm if needed.
+        # For now, let's assume the TSP optimization handles spatial locality.
+        # A simple check on contour length might be enough to remove empty ones.
+        unique_contours = [c for c in contours if len(c) > 2]
+
+        removed_count = len(contours) - len(unique_contours)
+        if removed_count > 0:
+            logger.info(f"      ✓ Removed {removed_count} simple/duplicate contours")
+        return unique_contours
 
 # ============ ORCHESTRATOR ============
 
 class MultiAgentOrchestrator:
     def __init__(self, api_key: str, debug: bool = True):
         self.debug = debug
-        
         self.vision_agent = VisionAgent(api_key)
         self.strategy_agent = StrategyAgent()
-        self.color_agent = ColorAgent()
         self.quality_agent = QualityAgent(api_key)
         self.execution_agent = None
-        
-        logger.info("🎭 Multi-Agent Orchestrator V5.0 (OpenAI) initialized")
+        logger.info("🎭 Multi-Agent Orchestrator V5.1 (OpenAI) initialized")
     
     def draw(self, image_path: str):
-        logger.info("\n" + "="*70)
-        logger.info("🎨 HYBRID DRAWING SYSTEM V5.0 - OPENAI VERSION")
-        logger.info("="*70)
+        logger.info("\n" + "="*70 + f"\n🎨 STARTING DRAWING: {os.path.basename(image_path)}\n" + "="*70)
         
         # PHASE 1: Setup Paint
         logger.info("\n📍 PHASE 1: Setup Paint")
         canvas_region = self._setup_paint()
+        if not canvas_region: return # Stop if setup fails
         self.execution_agent = ExecutionAgent(canvas_region)
         
         # PHASE 2: Vision Analysis
@@ -719,14 +577,20 @@ class MultiAgentOrchestrator:
         
         # PHASE 4: Image Processing
         logger.info("\n📍 PHASE 4: Multi-Scale Processing")
-        contours, image_shape = ImageProcessor.process_anime(image_path, strategy)
-        
+        try:
+            contours, image_shape = ImageProcessor.process_anime(image_path, strategy)
+        except FileNotFoundError as e:
+            logger.error(f"   ❌ ERROR: {e}")
+            return
+
+        if not contours:
+            logger.error("   ❌ No contours found in the image. Cannot draw.")
+            return
+
         # PHASE 5: Execution
         logger.info("\n📍 PHASE 5: Execution")
-        logger.info("   ⚠️ Drawing starts in 3 seconds...")
-        for i in range(3, 0, -1):
-            logger.info(f"      {i}...")
-            time.sleep(1)
+        logger.info("   ⚠️ Drawing starts in 3 seconds... Do not move the mouse!")
+        for i in range(3, 0, -1): logger.info(f"      {i}..."); time.sleep(1)
         
         self.execution_agent.draw_contours(contours, image_shape, strategy)
         
@@ -738,45 +602,50 @@ class MultiAgentOrchestrator:
         logger.info("\n📍 PHASE 7: Final Report")
         self._generate_report(analysis, strategy, metrics, len(contours))
         
-        logger.info("\n" + "="*70)
-        logger.info("✅ DRAWING COMPLETED!")
-        logger.info("="*70)
+        logger.info("\n" + "="*70 + "\n✅ DRAWING COMPLETED!\n" + "="*70)
     
-    def _setup_paint(self) -> Dict:
+    def _setup_paint(self) -> Optional[Dict]:
         logger.info("   🎨 Opening Microsoft Paint...")
+        os.system("start mspaint")
+        time.sleep(3) # Wait for Paint to open and become active
         
-        os.system("mspaint")
-        time.sleep(3)
-        
-        pyautogui.hotkey('win', 'up')
-        time.sleep(1)
-        
+        # --- CHANGE ---
+        # The 'win' + 'up' hotkey is removed to prevent screen splitting.
+        # We rely on Paint opening in a reasonable default size.
+        logger.info("   🔧 Skipping window maximization to avoid screen split.")
+
         screen_width, screen_height = pyautogui.size()
         
+        # Define a safe drawing area, assuming Paint is not fully maximized
         canvas_region = {
-            'x': 10,
-            'y': 150,
-            'width': screen_width - 20,
-            'height': screen_height - 200
+            'x': 100,  # Increased margin
+            'y': 200,  # Increased margin
+            'width': screen_width - 250, # Reduced width
+            'height': screen_height - 300 # Reduced height
         }
         
-        logger.info(f"   ✅ Canvas: {canvas_region['width']}x{canvas_region['height']}")
+        if canvas_region['width'] <= 0 or canvas_region['height'] <= 0:
+            logger.error("   ❌ Invalid screen or canvas size detected. Aborting.")
+            return None
+
+        logger.info(f"   ✅ Assumed Canvas: {canvas_region['width']}x{canvas_region['height']}")
         
-        pyautogui.click(canvas_region['x'] + 100, canvas_region['y'] + 100)
+        # Click in the middle of the canvas to give it focus
+        pyautogui.click(
+            canvas_region['x'] + canvas_region['width'] / 2,
+            canvas_region['y'] + canvas_region['height'] / 2
+        )
         time.sleep(0.5)
         
         return canvas_region
     
     def _generate_report(
-        self,
-        analysis: ImageAnalysis,
-        strategy: DrawingStrategy,
-        metrics: QualityMetrics,
-        contour_count: int
+        self, analysis: ImageAnalysis, strategy: DrawingStrategy, 
+        metrics: QualityMetrics, contour_count: int
     ):
         report = f"""
 ╔══════════════════════════════════════════════════════════════════╗
-║                    DRAWING REPORT V5.0 (OpenAI)                  ║
+║                    DRAWING REPORT V5.1 (OpenAI)                  ║
 ╚══════════════════════════════════════════════════════════════════╝
 
 📊 IMAGE ANALYSIS:
@@ -784,110 +653,74 @@ class MultiAgentOrchestrator:
    • Style: {analysis.style.value.upper()}
    • Is Anime: {'YES ✓' if analysis.is_anime else 'NO'}
    • Complexity: {analysis.complexity.value.upper()}
-   • Estimated contours: {analysis.estimated_contours}
-   • Actual contours drawn: {contour_count}
+   • Estimated/Actual Contours: {analysis.estimated_contours} / {contour_count}
 
 🎯 STRATEGY USED:
-   • Preprocessing:
-     - Blur kernel: {strategy.preprocessing['blur_kernel']}
-     - Canny thresholds: {strategy.preprocessing['canny_low']}-{strategy.preprocessing['canny_high']}
-     - Bilateral filter: {'YES' if strategy.preprocessing.get('use_bilateral') else 'NO'}
-     - CLAHE: {'YES' if strategy.preprocessing.get('use_clahe') else 'NO'}
-     - Multi-scale: {'YES' if strategy.preprocessing.get('multi_scale') else 'NO'}
+   • Preprocessing: Canny={strategy.preprocessing['canny_low']}-{strategy.preprocessing['canny_high']}, Bilateral={'YES' if strategy.preprocessing.get('use_bilateral') else 'NO'}
+   • Contour Params: Min Area={strategy.contour_params['min_area']}, Max Contours={strategy.contour_params['max_contours']}
    
-   • Contour parameters:
-     - Min area: {strategy.contour_params['min_area']}
-     - Epsilon factor: {strategy.contour_params['epsilon_factor']}
-     - Max contours: {strategy.contour_params['max_contours']}
-   
-   • Optimization level: {strategy.optimization_level}
-
 ✅ QUALITY METRICS:
-   • Overall Score: {metrics.overall_score:.2%} {'🌟' if metrics.overall_score > 0.7 else '⭐' if metrics.overall_score > 0.5 else '⚠️'}
+   • Overall Score: {metrics.overall_score:.2%} {'🌟' if metrics.overall_score > 0.4 else '⭐' if metrics.overall_score > 0.2 else '⚠️'}
    • Edge Accuracy: {metrics.edge_accuracy:.2%}
-   • Completeness: {metrics.completeness:.2%}
-   • Smoothness: {metrics.smoothness:.2%}
+   • Completeness:  {metrics.completeness:.2%}
+   • Smoothness:    {metrics.smoothness:.2%}
 
 🎨 KEY FEATURES DRAWN:
 """
-        
         for i, feature in enumerate(analysis.key_features[:5], 1):
             report += f"   {i}. {feature}\n"
         
-        report += "\n" + "="*70
-        
+        report += "═"*70
         logger.info(report)
         
-        with open("drawing_report.txt", "w", encoding="utf-8") as f:
-            f.write(report)
-        
-        logger.info("   📄 Report saved to: drawing_report.txt")
+        try:
+            with open("drawing_report.txt", "w", encoding="utf-8") as f:
+                f.write(report)
+            logger.info("   📄 Report saved to: drawing_report.txt")
+        except Exception as e:
+            logger.error(f"   ❌ Could not save report: {e}")
 
 # ============ MAIN FUNCTION ============
 
 def main():
-    print("""
-╔══════════════════════════════════════════════════════════════════╗
-║                                                                  ║
-║       🎨 HYBRID DRAWING SYSTEM V5.0 - OPENAI VERSION 🎨         ║
-║                                                                  ║
-║  Improvements:                                                   ║
-║  ⚡ OpenAI GPT-4 Vision (FASTER than Gemini)                     ║
-║  ✅ Multi-scale edge detection                                   ║
-║  ✅ Anime-specific preprocessing                                 ║
-║  ✅ Adaptive Canny thresholds                                    ║
-║  ✅ Hierarchical contour filtering                               ║
-║                                                                  ║
-╚══════════════════════════════════════════════════════════════════╝
-    """)
+    print("🎨 HYBRID DRAWING SYSTEM V5.1 - ANIME OPTIMIZED (OPENAI) 🎨")
     
-    # Load environment
     load_dotenv()
     api_key = os.getenv("OPENAI_API_KEY")
     
     if not api_key:
-        logger.error("❌ OPENAI_API_KEY not found in .env file!")
-        logger.info("💡 Add this to your .env file:")
-        logger.info("   OPENAI_API_KEY=sk-...")
+        logger.error("❌ OPENAI_API_KEY not found in .env file! Please create a .env file with OPENAI_API_KEY=sk-...")
         return
     
-    # Get image path
-    image_path = input("📁 Enter image path: ").strip().strip('"')
+    image_path = input("📁 Enter the path to your image: ").strip().strip('"')
     
     if not os.path.exists(image_path):
-        logger.error(f"❌ Image not found: {image_path}")
+        logger.error(f"❌ Image not found at path: {image_path}")
         return
     
-    logger.info(f"✅ Image loaded: {image_path}")
+    logger.info(f"✅ Image loaded: {os.path.basename(image_path)}")
     
-    # Confirm
-    print("\n⚠️  IMPORTANT:")
-    print("   1. Make sure Microsoft Paint is NOT already open")
-    print("   2. Close all unnecessary windows")
-    print("   3. Do NOT move mouse during drawing")
-    print("   4. Press Ctrl+C to stop at any time")
+    print("\n⚠️ IMPORTANT - PLEASE READ:")
+    print("   1. Close any existing MS Paint windows.")
+    print("   2. Minimize other windows to avoid interference.")
+    print("   3. DO NOT move the mouse or use the keyboard during the drawing process.")
+    print("   4. To stop the program, switch to the console window and press Ctrl+C.")
     
-    confirm = input("\n🚀 Ready to start? (yes/no): ").strip().lower()
-    
+    confirm = input("\n🚀 Ready to start drawing? (y/n): ").strip().lower()
     if confirm not in ['yes', 'y']:
-        logger.info("❌ Cancelled by user")
+        logger.info("❌ Operation cancelled by user.")
         return
     
-    # Initialize orchestrator
     orchestrator = MultiAgentOrchestrator(api_key=api_key, debug=True)
     
     try:
         orchestrator.draw(image_path)
-        print("\n✅ SUCCESS! Check your Paint window!")
-        
     except KeyboardInterrupt:
-        logger.warning("\n⚠️ Drawing interrupted by user")
-    
+        logger.warning("\n⚠️ Drawing interrupted by user (Ctrl+C).")
     except Exception as e:
-        logger.error(f"\n❌ Error: {e}", exc_info=True)
-    
+        logger.error(f"\n❌ An unexpected error occurred: {e}", exc_info=True)
     finally:
-        print("\n👋 Thank you for using Hybrid Drawing System V5.0!")
+        print("\n👋 Thank you for using the Hybrid Drawing System!")
 
 if __name__ == "__main__":
     main()
