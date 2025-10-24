@@ -91,3 +91,615 @@
 ======================================================================
 2025-10-24 09:33:45,931 [INFO] ✅ LANGGRAPH DRAWING COMPLETED!
 2025-10-24 09:33:45,932 [INFO] ======================================================================
+2025-10-24 10:21:30,035 [ERROR] ❌ OPENAI_API_KEY not found in environment!
+2025-10-24 10:22:13,561 [ERROR] ❌ OPENAI_API_KEY not found in environment!
+2025-10-24 10:22:52,523 [INFO] 🔍 Enhanced OpenAI Vision Agent initialized
+2025-10-24 10:22:52,835 [INFO] 🎯 LLM-Enhanced Strategy Agent initialized
+2025-10-24 10:22:53,152 [INFO] 🖼️ LLM-Enhanced Image Processor initialized
+2025-10-24 10:22:53,464 [INFO] ✏️ LLM-Enhanced Execution Agent initialized
+2025-10-24 10:22:53,806 [INFO] ✅ Enhanced OpenAI Quality Agent initialized
+2025-10-24 10:22:53,823 [WARNING] Could not generate graph visualization: Install pygraphviz to draw graphs: `pip install pygraphviz`.
+2025-10-24 10:22:53,823 [INFO] 
+======================================================================
+2025-10-24 10:22:53,823 [INFO] 🎨 STARTING LANGGRAPH DRAWING: doraemon_clean.jpg
+2025-10-24 10:22:53,823 [INFO] ======================================================================
+2025-10-24 10:22:53,824 [INFO] 
+📍 NODE: Setup Paint
+2025-10-24 10:22:58,895 [INFO]    ✅ Canvas: 1670x780
+2025-10-24 10:22:59,420 [INFO] 
+📍 NODE: OpenAI Vision Analysis
+2025-10-24 10:22:59,420 [INFO] 🔍 [VISION AGENT] Analyzing: images\doraemon_clean.jpg
+2025-10-24 10:22:59,434 [WARNING]    ⚠️ Resizing large image (676x1200)...
+2025-10-24 10:22:59,458 [INFO]    ✅ Resized to 577x1024
+2025-10-24 10:22:59,460 [INFO]    ⏳ Calling OpenAI GPT-4o-mini with enhanced prompt...
+2025-10-24 10:23:04,955 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 10:23:04,963 [INFO]    ⚡ Response in 5.50s
+2025-10-24 10:23:04,963 [INFO]    ✅ Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue ears and a red collar with a bell.
+2025-10-24 10:23:04,963 [INFO]    ✅ Is Anime: True
+2025-10-24 10:23:04,963 [INFO]    ✅ Complexity: simple
+2025-10-24 10:23:04,964 [INFO]    ✅ Priority Regions: ['face', 'eyes', 'mouth']
+2025-10-24 10:23:04,964 [INFO] 
+📍 NODE: LLM-Enhanced Strategy Planning
+2025-10-24 10:23:04,965 [INFO] 🎯 [STRATEGY AGENT] Planning with LLM assistance...
+2025-10-24 10:23:04,965 [INFO]    ⏳ Asking LLM for optimal parameters...
+2025-10-24 10:23:10,510 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 10:23:10,524 [ERROR]    ❌ LLM strategy request failed: 'list' object has no attribute 'message'
+2025-10-24 10:23:10,524 [WARNING]    ⚠️ LLM strategy failed, using enhanced fallback
+2025-10-24 10:23:10,525 [INFO] 
+📍 NODE: LLM-Enhanced Image Processing
+2025-10-24 10:23:10,527 [INFO]    🎨 Processing with LLM-enhanced pipeline...
+2025-10-24 10:23:10,547 [INFO]       ✓ CLAHE applied
+2025-10-24 10:23:10,551 [INFO]       ✓ Bilateral filter applied
+2025-10-24 10:23:10,552 [INFO]       ✓ Morphological gradient applied
+2025-10-24 10:23:10,556 [INFO]       ✓ Scale 1 (20-60): Found 69 contours
+2025-10-24 10:23:10,568 [INFO]       ✓ Scale 2 (10-30): Found 540 contours
+2025-10-24 10:23:10,572 [INFO]       ✓ Scale 3 (40-120): Found 69 contours
+2025-10-24 10:23:10,588 [INFO]    ✅ Final contours: 89, Image size: 676x1200
+2025-10-24 10:23:10,590 [INFO] 
+📍 DECISION: Check for Contours
+2025-10-24 10:23:10,590 [INFO]    ✅ Found 89 contours. Proceeding to drawing.
+2025-10-24 10:23:10,590 [INFO] 
+📍 NODE: LLM-Guided Drawing Execution
+2025-10-24 10:23:10,591 [INFO]    ⚠️ Starting in 3 seconds...
+2025-10-24 10:23:10,591 [INFO]       3...
+2025-10-24 10:23:11,591 [INFO]       2...
+2025-10-24 10:23:12,592 [INFO]       1...
+2025-10-24 10:23:13,593 [INFO] ✏️ [EXECUTION AGENT] Starting LLM-guided drawing...
+2025-10-24 10:23:13,593 [INFO]    📐 Scale: 0.552, Offset: (748.3, 258.5)
+2025-10-24 10:23:13,596 [INFO]    🎨 Drawing 89 contours with adaptive speed...
+2025-10-24 10:23:33,307 [INFO]    Progress: 50/89 (56.2%)
+2025-10-24 10:23:46,908 [INFO]    Progress: 89/89 (100.0%)
+2025-10-24 10:23:46,908 [INFO]    ✅ Drawing completed!
+2025-10-24 10:23:46,909 [INFO] 
+📍 NODE: LLM-Enhanced Quality Check
+2025-10-24 10:23:46,909 [INFO] ✅ [QUALITY AGENT] Evaluating with LLM assistance...
+2025-10-24 10:23:51,701 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 10:23:51,702 [INFO]    ✅ LLM assessment: The drawn version needs significant improvements in color, detail, and refinement to match the original character.
+2025-10-24 10:23:51,702 [INFO]    ✅ Strengths: The basic shape of the character is recognizable., The playful expression is somewhat captured in the drawn version.
+2025-10-24 10:23:51,703 [ERROR]    ❌ Quality evaluation failed: unsupported operand type(s) for //: 'tuple' and 'int'
+2025-10-24 10:23:51,704 [INFO] 
+======================================================================
+2025-10-24 10:23:51,704 [INFO] 📊 COMPREHENSIVE DRAWING REPORT
+2025-10-24 10:23:51,704 [INFO] ======================================================================
+2025-10-24 10:23:51,704 [INFO] 
+🔍 IMAGE ANALYSIS:
+2025-10-24 10:23:51,705 [INFO]    Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue ears and a red collar with a bell.
+2025-10-24 10:23:51,705 [INFO]    Style: cartoon, Complexity: simple
+2025-10-24 10:23:51,705 [INFO]    Priority Regions: face, eyes, mouth
+2025-10-24 10:23:51,705 [INFO] 
+🎯 STRATEGY:
+2025-10-24 10:23:51,705 [INFO]    Preprocessing Params: Canny Low=20, Canny High=60
+2025-10-24 10:23:51,706 [INFO]    Contour Params: Min Area=5, Max Contours=800
+2025-10-24 10:23:51,706 [INFO] 
+📈 EXECUTION:
+2025-10-24 10:23:51,706 [INFO]    Total Contours Drawn: 89
+2025-10-24 10:23:51,706 [INFO] 
+✅ QUALITY METRICS:
+2025-10-24 10:23:51,706 [INFO]    Overall Score: 0.00%
+2025-10-24 10:23:51,707 [INFO]    Edge Accuracy: 0.00%, Completeness: 0.00%
+2025-10-24 10:23:51,707 [INFO] 
+💡 LLM SUGGESTIONS FOR IMPROVEMENT:
+2025-10-24 10:23:51,707 [INFO]    1. Evaluation failed.
+2025-10-24 10:23:51,707 [INFO] 
+======================================================================
+2025-10-24 10:23:51,708 [INFO] 
+======================================================================
+2025-10-24 10:23:51,708 [INFO] ✅ LANGGRAPH DRAWING COMPLETED!
+2025-10-24 10:23:51,709 [INFO] ======================================================================
+2025-10-24 10:28:49,021 [INFO] 🔍 Enhanced OpenAI Vision Agent initialized
+2025-10-24 10:28:49,350 [INFO] 🎯 LLM-Enhanced Strategy Agent initialized
+2025-10-24 10:28:49,677 [INFO] 🖼️ LLM-Enhanced Image Processor initialized
+2025-10-24 10:28:50,005 [INFO] ✏️ LLM-Enhanced Execution Agent initialized
+2025-10-24 10:28:50,333 [INFO] ✅ Enhanced OpenAI Quality Agent initialized
+2025-10-24 10:28:50,351 [WARNING] Could not generate graph visualization: Install pygraphviz to draw graphs: `pip install pygraphviz`.
+2025-10-24 10:28:50,351 [INFO] 
+======================================================================
+2025-10-24 10:28:50,351 [INFO] 🎨 STARTING LANGGRAPH DRAWING: doraemon_clean.jpg
+2025-10-24 10:28:50,351 [INFO] ======================================================================
+2025-10-24 10:28:50,352 [INFO] 
+📍 NODE: Setup Paint
+2025-10-24 10:28:55,400 [INFO]    ✅ Canvas: 1670x780
+2025-10-24 10:28:55,919 [INFO] 
+📍 NODE: OpenAI Vision Analysis
+2025-10-24 10:28:55,920 [INFO] 🔍 [VISION AGENT] Analyzing: images\doraemon_clean.jpg
+2025-10-24 10:28:55,976 [WARNING]    ⚠️ Resizing large image (676x1200)...
+2025-10-24 10:28:55,999 [INFO]    ✅ Resized to 577x1024
+2025-10-24 10:28:55,999 [INFO]    ⏳ Calling OpenAI GPT-4o-mini with enhanced prompt...
+2025-10-24 10:29:01,344 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 10:29:01,350 [INFO]    ⚡ Response in 5.35s
+2025-10-24 10:29:01,351 [INFO]    ✅ Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue ears and a red collar with a bell.
+2025-10-24 10:29:01,351 [INFO]    ✅ Is Anime: True
+2025-10-24 10:29:01,351 [INFO]    ✅ Complexity: simple
+2025-10-24 10:29:01,351 [INFO]    ✅ Priority Regions: ['face', 'eyes', 'mouth']
+2025-10-24 10:29:01,352 [INFO] 
+📍 NODE: LLM-Enhanced Strategy Planning
+2025-10-24 10:29:01,353 [INFO] 🎯 [STRATEGY AGENT] Planning with LLM assistance...
+2025-10-24 10:29:01,353 [INFO]    ⏳ Asking LLM for optimal parameters...
+2025-10-24 10:29:07,766 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 10:29:07,771 [INFO]    ✅ LLM recommended: Canny=10-40
+2025-10-24 10:29:07,771 [INFO]    ✅ Max contours: 2000
+2025-10-24 10:29:07,772 [INFO]    ✅ Strategy built from LLM recommendations
+2025-10-24 10:29:07,772 [INFO] 
+📍 NODE: LLM-Enhanced Image Processing
+2025-10-24 10:29:07,773 [INFO]    🎨 Processing with LLM-enhanced pipeline...
+2025-10-24 10:29:07,797 [INFO]       ✓ CLAHE applied
+2025-10-24 10:29:07,802 [INFO]       ✓ Bilateral filter applied
+2025-10-24 10:29:07,803 [INFO]       ✓ Morphological gradient applied
+2025-10-24 10:29:07,811 [INFO]       ✓ Scale 1 (10-40): Found 358 contours
+2025-10-24 10:29:07,824 [INFO]       ✓ Scale 2 (5-20): Found 1584 contours
+2025-10-24 10:29:07,830 [INFO]       ✓ Scale 3 (20-80): Found 93 contours
+2025-10-24 10:29:07,874 [INFO]    ✅ Final contours: 123, Image size: 676x1200
+2025-10-24 10:29:07,876 [INFO] 
+📍 DECISION: Check for Contours
+2025-10-24 10:29:07,876 [INFO]    ✅ Found 123 contours. Proceeding to drawing.
+2025-10-24 10:29:07,877 [INFO] 
+📍 NODE: LLM-Guided Drawing Execution
+2025-10-24 10:29:07,877 [INFO]    ⚠️ Starting in 3 seconds...
+2025-10-24 10:29:07,877 [INFO]       3...
+2025-10-24 10:29:08,878 [INFO]       2...
+2025-10-24 10:29:09,879 [INFO]       1...
+2025-10-24 10:29:10,879 [INFO] ✏️ [EXECUTION AGENT] Starting LLM-guided drawing...
+2025-10-24 10:29:10,880 [INFO]    📐 Scale: 0.552, Offset: (748.3, 258.5)
+2025-10-24 10:29:10,884 [INFO]    🎨 Drawing 123 contours with adaptive speed...
+2025-10-24 10:30:02,957 [INFO]    Progress: 50/123 (40.7%)
+2025-10-24 10:30:47,523 [INFO]    Progress: 100/123 (81.3%)
+2025-10-24 10:31:10,990 [INFO]    Progress: 123/123 (100.0%)
+2025-10-24 10:31:10,990 [INFO]    ✅ Drawing completed!
+2025-10-24 10:31:10,991 [INFO] 
+📍 NODE: LLM-Enhanced Quality Check
+2025-10-24 10:31:10,991 [INFO] ✅ [QUALITY AGENT] Evaluating with LLM assistance...
+2025-10-24 10:31:14,791 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 10:31:14,792 [INFO]    ✅ LLM assessment: The drawn version lacks color and detail, making it less recognizable compared to the original.
+2025-10-24 10:31:14,792 [INFO]    ✅ Strengths: The overall shape of the character is recognizable., The playful expression is somewhat captured.
+2025-10-24 10:31:14,799 [INFO]    ✅ Overall: 0.08, Edge: 0.02, Complete: 0.04
+2025-10-24 10:31:14,799 [INFO]    ✅ Region scores: {'top': 0.0040563296878030446, 'middle': 0.066094386509993, 'bottom': 0.02208166215512185}
+2025-10-24 10:31:14,801 [INFO] 
+======================================================================
+2025-10-24 10:31:14,801 [INFO] 📊 COMPREHENSIVE DRAWING REPORT
+2025-10-24 10:31:14,802 [INFO] ======================================================================
+2025-10-24 10:31:14,802 [INFO] 
+🔍 IMAGE ANALYSIS:
+2025-10-24 10:31:14,802 [INFO]    Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue ears and a red collar with a bell.
+2025-10-24 10:31:14,802 [INFO]    Style: cartoon, Complexity: simple
+2025-10-24 10:31:14,803 [INFO]    Priority Regions: face, eyes, mouth
+2025-10-24 10:31:14,803 [INFO] 
+🎯 STRATEGY:
+2025-10-24 10:31:14,803 [INFO]    Preprocessing Params: Canny Low=10, Canny High=40
+2025-10-24 10:31:14,803 [INFO]    Contour Params: Min Area=2, Max Contours=2000
+2025-10-24 10:31:14,804 [INFO] 
+📈 EXECUTION:
+2025-10-24 10:31:14,804 [INFO]    Total Contours Drawn: 123
+2025-10-24 10:31:14,804 [INFO] 
+✅ QUALITY METRICS:
+2025-10-24 10:31:14,804 [INFO]    Overall Score: 7.82%
+2025-10-24 10:31:14,805 [INFO]    Edge Accuracy: 1.50%, Completeness: 4.01%
+2025-10-24 10:31:14,805 [INFO] 
+💡 LLM SUGGESTIONS FOR IMPROVEMENT:
+2025-10-24 10:31:14,805 [INFO]    1. Enhance the roundness of the face to match the original more closely.
+2025-10-24 10:31:14,805 [INFO]    2. Add color to the ears and collar to reflect the original character's design.
+2025-10-24 10:31:14,806 [INFO]    3. Increase the size of the eyes for a more playful expression.
+2025-10-24 10:31:14,806 [INFO]    4. Refine the details of the mouth and whiskers for better resemblance.
+2025-10-24 10:31:14,807 [INFO]    5. Consider adding blush marks to the cheeks for a more lively look.
+2025-10-24 10:31:14,808 [INFO] 
+======================================================================
+2025-10-24 10:31:14,809 [INFO] 
+======================================================================
+2025-10-24 10:31:14,810 [INFO] ✅ LANGGRAPH DRAWING COMPLETED!
+2025-10-24 10:31:14,810 [INFO] ======================================================================
+2025-10-24 10:37:37,303 [INFO] 🔍 Enhanced OpenAI Vision Agent initialized
+2025-10-24 10:37:37,639 [INFO] 🎯 LLM-Enhanced Strategy Agent initialized
+2025-10-24 10:37:37,988 [INFO] 🖼️ LLM-Enhanced Image Processor initialized
+2025-10-24 10:37:38,316 [INFO] ✏️ LLM-Enhanced Execution Agent initialized
+2025-10-24 10:37:38,649 [INFO] ✅ Enhanced OpenAI Quality Agent initialized
+2025-10-24 10:37:38,667 [WARNING] Could not generate graph visualization: Install pygraphviz to draw graphs: `pip install pygraphviz`.
+2025-10-24 10:37:38,667 [INFO] 
+======================================================================
+2025-10-24 10:37:38,667 [INFO] 🎨 STARTING LANGGRAPH DRAWING: doraemon_clean.jpg
+2025-10-24 10:37:38,668 [INFO] ======================================================================
+2025-10-24 10:37:38,669 [INFO] 
+📍 NODE: Setup Paint
+2025-10-24 10:37:43,719 [INFO]    ✅ Canvas: 1670x780
+2025-10-24 10:37:44,248 [INFO] 
+📍 NODE: OpenAI Vision Analysis
+2025-10-24 10:37:44,248 [INFO] 🔍 [VISION AGENT] Analyzing: images\doraemon_clean.jpg
+2025-10-24 10:37:44,263 [WARNING]    ⚠️ Resizing large image (676x1200)...
+2025-10-24 10:37:44,288 [INFO]    ✅ Resized to 577x1024
+2025-10-24 10:37:44,289 [INFO]    ⏳ Calling OpenAI GPT-4o-mini with enhanced prompt...
+2025-10-24 10:37:50,080 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 10:37:50,092 [INFO]    ⚡ Response in 5.80s
+2025-10-24 10:37:50,092 [INFO]    ✅ Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue ears and a red collar with a bell.
+2025-10-24 10:37:50,093 [INFO]    ✅ Is Anime: True
+2025-10-24 10:37:50,093 [INFO]    ✅ Complexity: simple
+2025-10-24 10:37:50,093 [INFO]    ✅ Priority Regions: ['face', 'eyes', 'ears']
+2025-10-24 10:37:50,094 [INFO] 
+📍 NODE: LLM-Enhanced Strategy Planning
+2025-10-24 10:37:50,094 [INFO] 🎯 [STRATEGY AGENT] Planning with LLM assistance...
+2025-10-24 10:37:50,095 [INFO]    ⏳ Asking LLM for optimal parameters...
+2025-10-24 10:37:54,465 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 10:37:54,469 [INFO]    ✅ LLM recommended: Canny=10-40
+2025-10-24 10:37:54,469 [INFO]    ✅ Max contours: 2000
+2025-10-24 10:37:54,470 [INFO]    ✅ Strategy built from LLM recommendations
+2025-10-24 10:37:54,471 [INFO] 
+📍 NODE: LLM-Enhanced Image Processing
+2025-10-24 10:37:54,471 [INFO]    🎨 Processing with LLM-enhanced pipeline...
+2025-10-24 10:37:54,492 [INFO]       ✓ CLAHE applied
+2025-10-24 10:37:54,496 [INFO]       ✓ Bilateral filter applied
+2025-10-24 10:37:54,497 [INFO]       ✓ Morphological gradient applied
+2025-10-24 10:37:54,504 [INFO]       ✓ Scale 1 (10-40): Found 358 contours
+2025-10-24 10:37:54,517 [INFO]       ✓ Scale 2 (5-20): Found 1584 contours
+2025-10-24 10:37:54,522 [INFO]       ✓ Scale 3 (20-80): Found 93 contours
+2025-10-24 10:37:54,566 [INFO]    ✅ Final contours: 123, Image size: 676x1200
+2025-10-24 10:37:54,568 [INFO] 
+📍 DECISION: Check for Contours
+2025-10-24 10:37:54,568 [INFO]    ✅ Found 123 contours. Proceeding to drawing.
+2025-10-24 10:37:54,568 [INFO] 
+📍 NODE: LLM-Guided Drawing Execution
+2025-10-24 10:37:54,569 [INFO]    ⚠️ Starting in 3 seconds...
+2025-10-24 10:37:54,569 [INFO]       3...
+2025-10-24 10:37:55,569 [INFO]       2...
+2025-10-24 10:37:56,570 [INFO]       1...
+2025-10-24 10:37:57,571 [INFO] ✏️ [EXECUTION AGENT] Starting LLM-guided drawing...
+2025-10-24 10:37:57,571 [INFO]    📐 Scale: 0.552, Offset: (748.3, 258.5)
+2025-10-24 10:37:57,576 [INFO]    🎨 Drawing 123 contours with adaptive speed...
+2025-10-24 10:38:49,568 [INFO]    Progress: 50/123 (40.7%)
+2025-10-24 10:39:34,102 [INFO]    Progress: 100/123 (81.3%)
+2025-10-24 10:39:57,585 [INFO]    Progress: 123/123 (100.0%)
+2025-10-24 10:39:57,585 [INFO]    ✅ Drawing completed!
+2025-10-24 10:39:57,586 [INFO] 
+📍 NODE: LLM-Enhanced Quality Check
+2025-10-24 10:39:57,586 [INFO] ✅ [QUALITY AGENT] Evaluating with LLM assistance...
+2025-10-24 10:40:00,670 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 10:40:00,675 [INFO]    ✅ LLM assessment: The drawn version captures the essence of the character but lacks detail and color accuracy.
+2025-10-24 10:40:00,675 [INFO]    ✅ Strengths: The basic shape of the character is recognizable., The playful pose conveys a fun attitude.
+2025-10-24 10:40:00,684 [INFO]    ✅ Overall: 0.08, Edge: 0.02, Complete: 0.04
+2025-10-24 10:40:00,684 [INFO]    ✅ Region scores: {'top': 0.0040563296878030446, 'middle': 0.06521857207701977, 'bottom': 0.02208166215512185}
+2025-10-24 10:40:00,686 [INFO] 
+======================================================================
+2025-10-24 10:40:00,686 [INFO] 📊 COMPREHENSIVE DRAWING REPORT
+2025-10-24 10:40:00,687 [INFO] ======================================================================
+2025-10-24 10:40:00,688 [INFO] 
+🔍 IMAGE ANALYSIS:
+2025-10-24 10:40:00,688 [INFO]    Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue ears and a red collar with a bell.
+2025-10-24 10:40:00,689 [INFO]    Style: cartoon, Complexity: simple
+2025-10-24 10:40:00,689 [INFO]    Priority Regions: face, eyes, ears
+2025-10-24 10:40:00,689 [INFO] 
+🎯 STRATEGY:
+2025-10-24 10:40:00,690 [INFO]    Preprocessing Params: Canny Low=10, Canny High=40
+2025-10-24 10:40:00,690 [INFO]    Contour Params: Min Area=2, Max Contours=2000
+2025-10-24 10:40:00,690 [INFO] 
+📈 EXECUTION:
+2025-10-24 10:40:00,690 [INFO]    Total Contours Drawn: 123
+2025-10-24 10:40:00,691 [INFO] 
+✅ QUALITY METRICS:
+2025-10-24 10:40:00,691 [INFO]    Overall Score: 7.83%
+2025-10-24 10:40:00,692 [INFO]    Edge Accuracy: 1.51%, Completeness: 3.97%
+2025-10-24 10:40:00,692 [INFO] 
+💡 LLM SUGGESTIONS FOR IMPROVEMENT:
+2025-10-24 10:40:00,692 [INFO]    1. Enhance the roundness of the face to match the original more closely.
+2025-10-24 10:40:00,692 [INFO]    2. Add color to the ears and collar to reflect the original character's design.
+2025-10-24 10:40:00,693 [INFO]    3. Improve the expression by making the eyes larger and more expressive.
+2025-10-24 10:40:00,693 [INFO]    4. Refine the outline to be smoother and more consistent with the original.
+2025-10-24 10:40:00,693 [INFO]    5. Incorporate shading or highlights to add depth to the character.
+2025-10-24 10:40:00,694 [INFO] 
+======================================================================
+2025-10-24 10:40:00,695 [INFO] 
+======================================================================
+2025-10-24 10:40:00,695 [INFO] ✅ LANGGRAPH DRAWING COMPLETED!
+2025-10-24 10:40:00,695 [INFO] ======================================================================
+2025-10-24 15:38:22,093 [INFO] 🔍 Enhanced OpenAI Vision Agent initialized
+2025-10-24 15:38:22,420 [INFO] 🎯 LLM-Enhanced Strategy Agent initialized
+2025-10-24 15:38:22,752 [INFO] 🖼️ LLM-Enhanced Image Processor initialized
+2025-10-24 15:38:23,081 [INFO] ✏️ LLM-Enhanced Execution Agent initialized
+2025-10-24 15:38:23,416 [INFO] ✅ Enhanced OpenAI Quality Agent initialized
+2025-10-24 15:38:23,440 [WARNING] Could not generate graph visualization: Install pygraphviz to draw graphs: `pip install pygraphviz`.
+2025-10-24 15:38:23,440 [INFO] 
+======================================================================
+2025-10-24 15:38:23,440 [INFO] 🎨 STARTING LANGGRAPH DRAWING: doraemon_clean.jpg
+2025-10-24 15:38:23,441 [INFO] ======================================================================
+2025-10-24 15:38:23,442 [INFO] 
+📍 NODE: Setup Paint
+2025-10-24 15:38:28,485 [INFO]    ✅ Canvas: 1670x780
+2025-10-24 15:38:29,015 [INFO] 
+📍 NODE: OpenAI Vision Analysis
+2025-10-24 15:38:29,015 [INFO] 🔍 [VISION AGENT] Analyzing: images\doraemon_clean.jpg
+2025-10-24 15:38:29,034 [WARNING]    ⚠️ Resizing large image (676x1200)...
+2025-10-24 15:38:29,065 [INFO]    ✅ Resized to 577x1024
+2025-10-24 15:38:29,066 [INFO]    ⏳ Calling OpenAI GPT-4o-mini with enhanced prompt...
+2025-10-24 15:38:35,257 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 15:38:35,264 [INFO]    ⚡ Response in 6.20s
+2025-10-24 15:38:35,264 [INFO]    ✅ Subject: A cartoon character with a round face, large eyes, and a playful expression, featuring a blue collar and a bell.
+2025-10-24 15:38:35,264 [INFO]    ✅ Is Anime: True
+2025-10-24 15:38:35,264 [INFO]    ✅ Complexity: simple
+2025-10-24 15:38:35,265 [INFO]    ✅ Priority Regions: ['face', 'eyes', 'mouth']
+2025-10-24 15:38:35,266 [INFO] 
+📍 NODE: LLM-Enhanced Strategy Planning
+2025-10-24 15:38:35,266 [INFO] 🎯 [STRATEGY AGENT] Planning with LLM assistance...
+2025-10-24 15:38:35,266 [INFO]    ⏳ Asking LLM for optimal parameters...
+2025-10-24 15:38:45,272 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 15:38:45,285 [INFO]    ✅ LLM recommended: Canny=10-40
+2025-10-24 15:38:45,285 [INFO]    ✅ Max contours: 2000
+2025-10-24 15:38:45,286 [INFO]    ✅ Strategy built from LLM recommendations
+2025-10-24 15:38:45,286 [INFO] 
+📍 NODE: LLM-Enhanced Image Processing
+2025-10-24 15:38:45,287 [INFO]    🎨 Processing with LLM-enhanced pipeline...
+2025-10-24 15:38:45,310 [INFO]       ✓ CLAHE applied
+2025-10-24 15:38:45,313 [INFO]       ✓ Bilateral filter applied
+2025-10-24 15:38:45,314 [INFO]       ✓ Morphological gradient applied
+2025-10-24 15:38:45,322 [INFO]       ✓ Scale 1 (10-40): Found 358 contours
+2025-10-24 15:38:45,336 [INFO]       ✓ Scale 2 (5-20): Found 1584 contours
+2025-10-24 15:38:45,342 [INFO]       ✓ Scale 3 (20-80): Found 93 contours
+2025-10-24 15:38:45,387 [INFO]    ✅ Final contours: 123, Image size: 676x1200
+2025-10-24 15:38:45,388 [INFO] 
+📍 DECISION: Check for Contours
+2025-10-24 15:38:45,388 [INFO]    ✅ Found 123 contours. Proceeding to drawing.
+2025-10-24 15:38:45,389 [INFO] 
+📍 NODE: LLM-Guided Drawing Execution
+2025-10-24 15:38:45,389 [INFO]    ⚠️ Starting in 3 seconds...
+2025-10-24 15:38:45,389 [INFO]       3...
+2025-10-24 15:38:46,389 [INFO]       2...
+2025-10-24 15:38:47,390 [INFO]       1...
+2025-10-24 15:38:48,390 [INFO] ✏️ [EXECUTION AGENT] Starting LLM-guided drawing...
+2025-10-24 15:38:48,391 [INFO]    📐 Scale: 0.552, Offset: (748.3, 258.5)
+2025-10-24 15:38:48,396 [INFO]    🎨 Drawing 123 contours with adaptive speed...
+2025-10-24 15:39:40,385 [INFO]    Progress: 50/123 (40.7%)
+2025-10-24 15:40:24,934 [INFO]    Progress: 100/123 (81.3%)
+2025-10-24 15:40:48,401 [INFO]    Progress: 123/123 (100.0%)
+2025-10-24 15:40:48,401 [INFO]    ✅ Drawing completed!
+2025-10-24 15:40:48,402 [INFO] 
+📍 NODE: LLM-Enhanced Quality Check
+2025-10-24 15:40:48,402 [INFO] ✅ [QUALITY AGENT] Evaluating with LLM assistance...
+2025-10-24 15:40:52,905 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 15:40:52,907 [INFO]    ✅ LLM assessment: The drawn version has potential but requires significant improvements in color, detail, and proportions to match the original.
+2025-10-24 15:40:52,907 [INFO]    ✅ Strengths: The playful expression is captured well., The basic outline of the character is recognizable.
+2025-10-24 15:40:52,915 [INFO]    ✅ Overall: 0.12, Edge: 0.01, Complete: 0.19
+2025-10-24 15:40:52,916 [INFO]    ✅ Region scores: {'top': 0.06076722367156769, 'middle': 0.13854699529167414, 'bottom': 0.10807682506033789}
+2025-10-24 15:40:52,917 [INFO] 
+======================================================================
+2025-10-24 15:40:52,917 [INFO] 📊 COMPREHENSIVE DRAWING REPORT
+2025-10-24 15:40:52,918 [INFO] ======================================================================
+2025-10-24 15:40:52,918 [INFO] 
+🔍 IMAGE ANALYSIS:
+2025-10-24 15:40:52,918 [INFO]    Subject: A cartoon character with a round face, large eyes, and a playful expression, featuring a blue collar and a bell.
+2025-10-24 15:40:52,919 [INFO]    Style: cartoon, Complexity: simple
+2025-10-24 15:40:52,919 [INFO]    Priority Regions: face, eyes, mouth
+2025-10-24 15:40:52,919 [INFO] 
+🎯 STRATEGY:
+2025-10-24 15:40:52,919 [INFO]    Preprocessing Params: Canny Low=10, Canny High=40
+2025-10-24 15:40:52,920 [INFO]    Contour Params: Min Area=2, Max Contours=2000
+2025-10-24 15:40:52,920 [INFO] 
+📈 EXECUTION:
+2025-10-24 15:40:52,920 [INFO]    Total Contours Drawn: 123
+2025-10-24 15:40:52,920 [INFO] 
+✅ QUALITY METRICS:
+2025-10-24 15:40:52,920 [INFO]    Overall Score: 11.60%
+2025-10-24 15:40:52,921 [INFO]    Edge Accuracy: 0.83%, Completeness: 18.69%
+2025-10-24 15:40:52,922 [INFO] 
+💡 LLM SUGGESTIONS FOR IMPROVEMENT:
+2025-10-24 15:40:52,923 [INFO]    1. Enhance the roundness of the face to match the original more closely.
+2025-10-24 15:40:52,923 [INFO]    2. Add color to the drawn version to reflect the vibrant hues of the original character.
+2025-10-24 15:40:52,923 [INFO]    3. Refine the eyes to make them larger and more expressive, similar to the original.
+2025-10-24 15:40:52,923 [INFO]    4. Improve the collar and bell details for better accuracy.
+2025-10-24 15:40:52,923 [INFO]    5. Adjust the overall proportions to align more with the original character's design.
+2025-10-24 15:40:52,924 [INFO] 
+======================================================================
+2025-10-24 15:40:52,925 [INFO] 
+======================================================================
+2025-10-24 15:40:52,925 [INFO] ✅ LANGGRAPH DRAWING COMPLETED!
+2025-10-24 15:40:52,925 [INFO] ======================================================================
+2025-10-24 15:43:07,938 [INFO] 🔍 Enhanced OpenAI Vision Agent initialized
+2025-10-24 15:43:08,266 [INFO] 🎯 LLM-Enhanced Strategy Agent initialized
+2025-10-24 15:43:08,595 [INFO] 🖼️ LLM-Enhanced Image Processor initialized
+2025-10-24 15:43:08,924 [INFO] ✏️ LLM-Enhanced Execution Agent initialized
+2025-10-24 15:43:09,254 [INFO] ✅ Enhanced OpenAI Quality Agent initialized
+2025-10-24 15:43:09,271 [WARNING] Could not generate graph visualization: Install pygraphviz to draw graphs: `pip install pygraphviz`.
+2025-10-24 15:43:09,271 [INFO] 
+======================================================================
+2025-10-24 15:43:09,271 [INFO] 🎨 STARTING LANGGRAPH DRAWING: malphite.jpg
+2025-10-24 15:43:09,271 [INFO] ======================================================================
+2025-10-24 15:43:09,272 [INFO] 
+📍 NODE: Setup Paint
+2025-10-24 15:43:14,316 [INFO]    ✅ Canvas: 1670x780
+2025-10-24 15:43:14,831 [INFO] 
+📍 NODE: OpenAI Vision Analysis
+2025-10-24 15:43:14,832 [INFO] 🔍 [VISION AGENT] Analyzing: images\malphite.jpg
+2025-10-24 15:43:14,845 [INFO]    ⏳ Calling OpenAI GPT-4o-mini with enhanced prompt...
+2025-10-24 15:43:21,474 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 15:43:21,481 [INFO]    ⚡ Response in 6.64s
+2025-10-24 15:43:21,481 [INFO]    ✅ Subject: A rocky creature with a large, blocky head and muscular arms made of stone, featuring spikes on its back and a red core.
+2025-10-24 15:43:21,481 [INFO]    ✅ Is Anime: True
+2025-10-24 15:43:21,482 [INFO]    ✅ Complexity: medium
+2025-10-24 15:43:21,482 [INFO]    ✅ Priority Regions: ['head', 'arms', 'body']
+2025-10-24 15:43:21,483 [INFO] 
+📍 NODE: LLM-Enhanced Strategy Planning
+2025-10-24 15:43:21,483 [INFO] 🎯 [STRATEGY AGENT] Planning with LLM assistance...
+2025-10-24 15:43:21,483 [INFO]    ⏳ Asking LLM for optimal parameters...
+2025-10-24 15:43:26,966 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 15:43:26,971 [INFO]    ✅ LLM recommended: Canny=10-40
+2025-10-24 15:43:26,971 [INFO]    ✅ Max contours: 2000
+2025-10-24 15:43:26,971 [INFO]    ✅ Strategy built from LLM recommendations
+2025-10-24 15:43:26,972 [INFO] 
+📍 NODE: LLM-Enhanced Image Processing
+2025-10-24 15:43:26,972 [INFO]    🎨 Processing with LLM-enhanced pipeline...
+2025-10-24 15:43:26,992 [INFO]       ✓ CLAHE applied
+2025-10-24 15:43:26,996 [INFO]       ✓ Bilateral filter applied
+2025-10-24 15:43:26,996 [INFO]       ✓ Morphological gradient applied
+2025-10-24 15:43:27,009 [INFO]       ✓ Scale 1 (10-40): Found 1263 contours
+2025-10-24 15:43:27,030 [INFO]       ✓ Scale 2 (5-20): Found 2351 contours
+2025-10-24 15:43:27,038 [INFO]       ✓ Scale 3 (20-80): Found 678 contours
+2025-10-24 15:43:27,119 [INFO]    ✅ Final contours: 141, Image size: 600x600
+2025-10-24 15:43:27,121 [INFO] 
+📍 DECISION: Check for Contours
+2025-10-24 15:43:27,121 [INFO]    ✅ Found 141 contours. Proceeding to drawing.
+2025-10-24 15:43:27,122 [INFO] 
+📍 NODE: LLM-Guided Drawing Execution
+2025-10-24 15:43:27,122 [INFO]    ⚠️ Starting in 3 seconds...
+2025-10-24 15:43:27,122 [INFO]       3...
+2025-10-24 15:43:28,123 [INFO]       2...
+2025-10-24 15:43:29,123 [INFO]       1...
+2025-10-24 15:43:30,124 [INFO] ✏️ [EXECUTION AGENT] Starting LLM-guided drawing...
+2025-10-24 15:43:30,124 [INFO]    📐 Scale: 1.105, Offset: (603.5, 258.5)
+2025-10-24 15:43:30,130 [INFO]    🎨 Drawing 141 contours with adaptive speed...
+2025-10-24 15:44:13,634 [INFO]    Progress: 50/141 (35.5%)
+2025-10-24 15:45:04,051 [INFO]    Progress: 100/141 (70.9%)
+2025-10-24 15:45:30,018 [INFO]    Progress: 141/141 (100.0%)
+2025-10-24 15:45:30,018 [INFO]    ✅ Drawing completed!
+2025-10-24 15:45:30,018 [INFO] 
+📍 NODE: LLM-Enhanced Quality Check
+2025-10-24 15:45:30,019 [INFO] ✅ [QUALITY AGENT] Evaluating with LLM assistance...
+2025-10-24 15:45:34,886 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 15:45:34,887 [INFO]    ✅ LLM assessment: The drawn version needs significant refinement in color, detail, and proportion to better represent the original image.
+2025-10-24 15:45:34,887 [INFO]    ✅ Strengths: The drawn version captures the basic shape and silhouette of the creature., The concept of the rocky texture is present, providing a foundation for improvement.
+2025-10-24 15:45:34,893 [INFO]    ✅ Overall: 0.17, Edge: 0.04, Complete: 0.33
+2025-10-24 15:45:34,893 [INFO]    ✅ Region scores: {'top': 0.1666158899723527, 'middle': 0.16373403158764266, 'bottom': 0.2473792059802936}
+2025-10-24 15:45:34,894 [INFO] 
+======================================================================
+2025-10-24 15:45:34,895 [INFO] 📊 COMPREHENSIVE DRAWING REPORT
+2025-10-24 15:45:34,895 [INFO] ======================================================================
+2025-10-24 15:45:34,895 [INFO] 
+🔍 IMAGE ANALYSIS:
+2025-10-24 15:45:34,896 [INFO]    Subject: A rocky creature with a large, blocky head and muscular arms made of stone, featuring spikes on its back and a red core.
+2025-10-24 15:45:34,896 [INFO]    Style: cartoon, Complexity: medium
+2025-10-24 15:45:34,896 [INFO]    Priority Regions: head, arms, body
+2025-10-24 15:45:34,897 [INFO] 
+🎯 STRATEGY:
+2025-10-24 15:45:34,897 [INFO]    Preprocessing Params: Canny Low=10, Canny High=40
+2025-10-24 15:45:34,897 [INFO]    Contour Params: Min Area=2, Max Contours=2000
+2025-10-24 15:45:34,897 [INFO] 
+📈 EXECUTION:
+2025-10-24 15:45:34,898 [INFO]    Total Contours Drawn: 141
+2025-10-24 15:45:34,898 [INFO] 
+✅ QUALITY METRICS:
+2025-10-24 15:45:34,898 [INFO]    Overall Score: 16.65%
+2025-10-24 15:45:34,898 [INFO]    Edge Accuracy: 3.96%, Completeness: 33.38%
+2025-10-24 15:45:34,899 [INFO] 
+💡 LLM SUGGESTIONS FOR IMPROVEMENT:
+2025-10-24 15:45:34,899 [INFO]    1. Add color to the drawn version to match the original image's vibrant red core and earthy tones.
+2025-10-24 15:45:34,899 [INFO]    2. Enhance the details of the rocky texture to better reflect the original's stone-like appearance.
+2025-10-24 15:45:34,899 [INFO]    3. Incorporate shading and highlights to give depth and dimension to the drawn version.
+2025-10-24 15:45:34,899 [INFO]    4. Refine the outline to make it smoother and more defined, capturing the character's features more accurately.
+2025-10-24 15:45:34,900 [INFO]    5. Adjust the proportions of the arms and head to align more closely with the original's muscular and blocky design.
+2025-10-24 15:45:34,900 [INFO] 
+======================================================================
+2025-10-24 15:45:34,901 [INFO] 
+======================================================================
+2025-10-24 15:45:34,902 [INFO] ✅ LANGGRAPH DRAWING COMPLETED!
+2025-10-24 15:45:34,902 [INFO] ======================================================================
+2025-10-24 15:47:15,912 [INFO] 🔍 Enhanced OpenAI Vision Agent initialized
+2025-10-24 15:47:16,240 [INFO] 🎯 LLM-Enhanced Strategy Agent initialized
+2025-10-24 15:47:16,580 [INFO] 🖼️ LLM-Enhanced Image Processor initialized
+2025-10-24 15:47:16,915 [INFO] ✏️ LLM-Enhanced Execution Agent initialized
+2025-10-24 15:47:17,249 [INFO] ✅ Enhanced OpenAI Quality Agent initialized
+2025-10-24 15:47:17,265 [WARNING] Could not generate graph visualization: Install pygraphviz to draw graphs: `pip install pygraphviz`.
+2025-10-24 15:47:17,265 [INFO] 
+======================================================================
+2025-10-24 15:47:17,265 [INFO] 🎨 STARTING LANGGRAPH DRAWING: doraemon_clean.jpg
+2025-10-24 15:47:17,265 [INFO] ======================================================================
+2025-10-24 15:47:17,266 [INFO] 
+📍 NODE: Setup Paint
+2025-10-24 15:47:22,341 [INFO]    ✅ Canvas: 1670x780
+2025-10-24 15:47:22,862 [INFO] 
+📍 NODE: OpenAI Vision Analysis
+2025-10-24 15:47:22,863 [INFO] 🔍 [VISION AGENT] Analyzing: images\doraemon_clean.jpg
+2025-10-24 15:47:22,875 [WARNING]    ⚠️ Resizing large image (676x1200)...
+2025-10-24 15:47:22,898 [INFO]    ✅ Resized to 577x1024
+2025-10-24 15:47:22,898 [INFO]    ⏳ Calling OpenAI GPT-4o-mini with enhanced prompt...
+2025-10-24 15:47:35,572 [INFO] 🔍 Enhanced OpenAI Vision Agent initialized
+2025-10-24 15:47:35,895 [INFO] 🎯 LLM-Enhanced Strategy Agent initialized
+2025-10-24 15:47:36,219 [INFO] 🖼️ LLM-Enhanced Image Processor initialized
+2025-10-24 15:47:36,542 [INFO] ✏️ LLM-Enhanced Execution Agent initialized
+2025-10-24 15:47:36,866 [INFO] ✅ Enhanced OpenAI Quality Agent initialized
+2025-10-24 15:47:36,880 [WARNING] Could not generate graph visualization: Install pygraphviz to draw graphs: `pip install pygraphviz`.
+2025-10-24 15:47:36,880 [INFO] 
+======================================================================
+2025-10-24 15:47:36,881 [INFO] 🎨 STARTING LANGGRAPH DRAWING: doraemon_clean.jpg
+2025-10-24 15:47:36,881 [INFO] ======================================================================
+2025-10-24 15:47:36,882 [INFO] 
+📍 NODE: Setup Paint
+2025-10-24 15:47:41,926 [INFO]    ✅ Canvas: 1670x780
+2025-10-24 15:47:42,446 [INFO] 
+📍 NODE: OpenAI Vision Analysis
+2025-10-24 15:47:42,446 [INFO] 🔍 [VISION AGENT] Analyzing: images\doraemon_clean.jpg
+2025-10-24 15:47:42,457 [WARNING]    ⚠️ Resizing large image (676x1200)...
+2025-10-24 15:47:42,481 [INFO]    ✅ Resized to 577x1024
+2025-10-24 15:47:42,482 [INFO]    ⏳ Calling OpenAI GPT-4o-mini with enhanced prompt...
+2025-10-24 15:47:48,494 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 15:47:48,500 [INFO]    ⚡ Response in 6.02s
+2025-10-24 15:47:48,501 [INFO]    ✅ Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue and white fur, a red collar with a bell, and rosy cheeks.
+2025-10-24 15:47:48,501 [INFO]    ✅ Is Anime: True
+2025-10-24 15:47:48,501 [INFO]    ✅ Complexity: simple
+2025-10-24 15:47:48,502 [INFO]    ✅ Priority Regions: ['face', 'eyes', 'mouth']
+2025-10-24 15:47:48,502 [INFO] 
+📍 NODE: LLM-Enhanced Strategy Planning
+2025-10-24 15:47:48,503 [INFO] 🎯 [STRATEGY AGENT] Planning with LLM assistance...
+2025-10-24 15:47:48,503 [INFO]    ⏳ Asking LLM for optimal parameters...
+2025-10-24 15:47:54,421 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 15:47:54,426 [INFO]    ✅ LLM recommended: Canny=10-40
+2025-10-24 15:47:54,426 [INFO]    ✅ Max contours: 2000
+2025-10-24 15:47:54,426 [INFO]    ✅ Strategy built from LLM recommendations
+2025-10-24 15:47:54,427 [INFO] 
+📍 NODE: LLM-Enhanced Image Processing
+2025-10-24 15:47:54,427 [INFO]    🎨 Processing with LLM-enhanced pipeline...
+2025-10-24 15:47:54,449 [INFO]       ✓ CLAHE applied
+2025-10-24 15:47:54,457 [INFO]       ✓ Bilateral filter applied
+2025-10-24 15:47:54,462 [INFO]       ✓ Morphological gradient applied
+2025-10-24 15:47:54,471 [INFO]       ✓ Scale 1 (10-40): Found 358 contours
+2025-10-24 15:47:54,486 [INFO]       ✓ Scale 2 (5-20): Found 1584 contours
+2025-10-24 15:47:54,493 [INFO]       ✓ Scale 3 (20-80): Found 93 contours
+2025-10-24 15:47:54,540 [INFO]    ✅ Final contours: 123, Image size: 676x1200
+2025-10-24 15:47:54,541 [INFO] 
+📍 DECISION: Check for Contours
+2025-10-24 15:47:54,541 [INFO]    ✅ Found 123 contours. Proceeding to drawing.
+2025-10-24 15:47:54,542 [INFO] 
+📍 NODE: LLM-Guided Drawing Execution
+2025-10-24 15:47:54,542 [INFO]    ⚠️ Starting in 3 seconds...
+2025-10-24 15:47:54,542 [INFO]       3...
+2025-10-24 15:47:55,543 [INFO]       2...
+2025-10-24 15:47:56,543 [INFO]       1...
+2025-10-24 15:47:57,544 [INFO] ✏️ [EXECUTION AGENT] Starting LLM-guided drawing...
+2025-10-24 15:47:57,544 [INFO]    📐 Scale: 0.552, Offset: (748.3, 258.5)
+2025-10-24 15:47:57,549 [INFO]    🎨 Drawing 123 contours with adaptive speed...
+2025-10-24 15:48:49,533 [INFO]    Progress: 50/123 (40.7%)
+2025-10-24 15:49:34,083 [INFO]    Progress: 100/123 (81.3%)
+2025-10-24 15:49:57,550 [INFO]    Progress: 123/123 (100.0%)
+2025-10-24 15:49:57,551 [INFO]    ✅ Drawing completed!
+2025-10-24 15:49:57,551 [INFO] 
+📍 NODE: LLM-Enhanced Quality Check
+2025-10-24 15:49:57,552 [INFO] ✅ [QUALITY AGENT] Evaluating with LLM assistance...
+2025-10-24 15:50:02,000 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-24 15:50:02,001 [INFO]    ✅ LLM assessment: The drawn version captures the essence of the character but requires significant improvements in color, detail, and shape to match the original.
+2025-10-24 15:50:02,001 [INFO]    ✅ Strengths: The overall playful expression is captured well., The basic structure of the character is recognizable.
+2025-10-24 15:50:02,008 [INFO]    ✅ Overall: 0.12, Edge: 0.01, Complete: 0.20
+2025-10-24 15:50:02,009 [INFO]    ✅ Region scores: {'top': 0.06665186254347175, 'middle': 0.14658528902371445, 'bottom': 0.10800723308000615}
+2025-10-24 15:50:02,010 [INFO] 
+======================================================================
+2025-10-24 15:50:02,011 [INFO] 📊 COMPREHENSIVE DRAWING REPORT
+2025-10-24 15:50:02,011 [INFO] ======================================================================
+2025-10-24 15:50:02,011 [INFO] 
+🔍 IMAGE ANALYSIS:
+2025-10-24 15:50:02,012 [INFO]    Subject: A cartoon character with a round face, large eyes, and a playful expression. The character has blue and white fur, a red collar with a bell, and rosy cheeks.
+2025-10-24 15:50:02,012 [INFO]    Style: cartoon, Complexity: simple
+2025-10-24 15:50:02,012 [INFO]    Priority Regions: face, eyes, mouth
+2025-10-24 15:50:02,013 [INFO] 
+🎯 STRATEGY:
+2025-10-24 15:50:02,013 [INFO]    Preprocessing Params: Canny Low=10, Canny High=40
+2025-10-24 15:50:02,013 [INFO]    Contour Params: Min Area=2, Max Contours=2000
+2025-10-24 15:50:02,013 [INFO] 
+📈 EXECUTION:
+2025-10-24 15:50:02,014 [INFO]    Total Contours Drawn: 123
+2025-10-24 15:50:02,014 [INFO] 
+✅ QUALITY METRICS:
+2025-10-24 15:50:02,014 [INFO]    Overall Score: 11.88%
+2025-10-24 15:50:02,015 [INFO]    Edge Accuracy: 0.82%, Completeness: 19.56%
+2025-10-24 15:50:02,015 [INFO] 
+💡 LLM SUGGESTIONS FOR IMPROVEMENT:
+2025-10-24 15:50:02,015 [INFO]    1. Enhance the roundness of the face to better match the original character's shape.
+2025-10-24 15:50:02,015 [INFO]    2. Add color to the drawn version to replicate the blue and white fur accurately.
+2025-10-24 15:50:02,016 [INFO]    3. Refine the eyes to make them larger and more expressive, similar to the original.
+2025-10-24 15:50:02,016 [INFO]    4. Improve the collar design to include the bell and ensure it is more prominent.
+2025-10-24 15:50:02,016 [INFO]    5. Add shading or highlights to the cheeks to achieve the rosy effect seen in the original.
+2025-10-24 15:50:02,016 [INFO] 
+======================================================================
+2025-10-24 15:50:02,017 [INFO] 
+======================================================================
+2025-10-24 15:50:02,018 [INFO] ✅ LANGGRAPH DRAWING COMPLETED!
+2025-10-24 15:50:02,018 [INFO] ======================================================================

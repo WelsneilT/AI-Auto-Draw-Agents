@@ -197,7 +197,7 @@ Return ONLY JSON."""
         try:
             logger.info("   ⏳ Asking LLM for optimal parameters...")
             response = self.client.chat.completions.create(model="gpt-4o-mini", messages=[{"role": "system", "content": "You are an expert in computer vision and OpenCV parameter optimization."}, {"role": "user", "content": prompt}], max_tokens=800, temperature=0.2, timeout=30.0)
-            text = response.choices.message.content.strip()
+            text = response.choices[0].message.content.strip()
             if text.startswith("```json"): text = text.replace("```json", "").replace("```", "").strip()
             elif text.startswith("```"): text = text.replace("```", "").strip()
             params = json.loads(text)
@@ -444,7 +444,7 @@ Return ONLY JSON."""
             logger.error(f"   ❌ LLM assessment failed: {e}")
             return ["Could not get LLM assessment"]
     def _calculate_region_scores(self, original: np.ndarray, drawn: np.ndarray, analysis: ImageAnalysis) -> Dict[str, float]:
-        height = original.shape; region_scores = {}
+        height = original.shape[0]; region_scores = {}
         regions = {"top": (0, height // 3), "middle": (height // 3, 2 * height // 3), "bottom": (2 * height // 3, height)}
         for region_name, (start, end) in regions.items():
             orig_region = original[start:end, :]; drawn_region = drawn[start:end, :]
